@@ -17,10 +17,10 @@ router.get('/', async(req, res, next) =>{
 
 router.get('/:taskId', async(req,res,next) =>{
   try{
-    const task = await Task.findByPk(req.params.id);
+    const task = await Task.findByPk(req.params.taskId);
     res.send(task);
   } catch(error){
-    console.log(`Unable to get Task ${req.params.id}`);
+    console.log(`Unable to get Task ${req.params.taskId}`);
   }
 });
 

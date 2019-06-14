@@ -66,3 +66,15 @@ nav .flex-container > ul > li {
   text-decoration: none;
 
 }
+
+.editForm-wrapper {
+  max-width: 480px;
+  margin: 60px auto;
+}
+
+.form .input_wrapper {
+  width: 100%;
+  margin: auto;
+  position: relative;
+  padding: 5px;
+}

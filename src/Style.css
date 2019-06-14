@@ -1,3 +1,68 @@
 body {
   background-color: lightblue;
 }
+
+nav {
+  /*Position of Nav*/
+  z-index: 20;
+  position: sticky;
+  top: 0;
+
+  /*Size of Nav*/
+  padding: 1.5em 0em;
+  width: 100%;
+
+
+  /*Nav Color*/
+  background-color: #FFF;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: 0px 5px rgba(0,0,0,0.25);
+  opacity: 1;
+}
+
+nav .logo{
+  display: block;
+  padding: 0em 1.2em;
+  font-size: 2em;
+}
+
+nav a{
+  text-decoration: none;
+}
+nav a:visited{
+  color: black;
+}
+
+nav > .flex-container{
+      /*Setting Flex display properties*/
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+      justify-content: space-between;
+  
+}
+
+nav .flex-container > ul { 
+  
+  margin: 0;
+  list-style: none;
+
+  margin-right: 40px; 
+
+    /*Setting Flex display properties*/
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: baseline;
+
+}
+
+nav .flex-container > ul > li { 
+  padding-left: 1em;
+  font-size: 1.3em;
+  color: #000;
+  opacity: 1;
+
+  text-decoration: none;
+
+}

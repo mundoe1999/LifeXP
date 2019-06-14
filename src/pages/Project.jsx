@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import NavBar from '../components/essentials/NavBar';
 import TitleDesc from '../components/project/TitleDesc';
+import TaskCard from '../components/project/TaskCard'
 
 class Project extends Component{
+
 	render(){
 		return (
 			<div>
@@ -11,6 +13,7 @@ class Project extends Component{
 				</head>
 				<NavBar/>
 				<TitleDesc/>
+				<TaskCard/><TaskCard/><TaskCard/>
 			</div>
 			)
 	}

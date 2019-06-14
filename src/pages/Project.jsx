@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from '../components/essentials/NavBar';
+import TitleDesc from '../components/project/TitleDesc';
 
 class Project extends Component{
 	render(){
@@ -9,9 +10,7 @@ class Project extends Component{
 					<link rel="stylesheet" type="text/css" href="../Style.css"/>
 				</head>
 				<NavBar/>
-				<div>
-					Test!
-				</div>
+				<TitleDesc/>
 			</div>
 			)
 	}

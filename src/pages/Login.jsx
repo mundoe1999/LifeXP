@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import NavBar from '../components/essentials/NavBar';
 import LoginForm from '../components/essentials/LoginForm';
 
-class Project extends Component{
+
+class LoginComponent extends Component{
 	render(){
 		return (
 			<div>
@@ -11,12 +12,11 @@ class Project extends Component{
 				</head>
 				<NavBar/>
 				<div>
-					Test!
-					{/* <LoginForm/> */}
+					<LoginForm />
 				</div>
 			</div>
 			)
 	}
 }
 
-export default Project;
+export default LoginComponent;

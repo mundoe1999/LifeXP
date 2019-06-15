@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import axios from 'axios';
+
+//Eventually
+// import { connect } from 'react-redux';
+// import axios from 'axios';
 
 
 class LoginForm extends Component {
@@ -43,14 +45,14 @@ class LoginForm extends Component {
 						<label className = "add_item_label" htmlFor = "userName">
 							Username:
 						</label>
-						<input type = "text" name = "userName" onChange = { this.handleInputChange } />
+						<input type = "text" name = "userName" placeholder="Username" onChange = { this.handleInputChange } />
 					</div>
 
 					<div className = "input_wrapper">
 						<label className = "add_item_label" htmlFor = "password">
 							Password:
 						</label>
-						<input type = "text" name = "password" onChange = { this.handleInputChange } />
+						<input type = "text" name = "password" placeholder="Password" onChange = { this.handleInputChange } />
 					</div>
 					<div className = "btn_controls_wrapper sm">
 						{ (this.state.displayErrorMessage) 
@@ -69,8 +71,5 @@ class LoginForm extends Component {
 
 	}
 
-}
-
-// null is passed in since we don't use mapStateToProps
-// we don't care about adding this component's state to the props 
+} 
 export default LoginForm;

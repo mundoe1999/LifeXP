@@ -28,8 +28,9 @@ const User = db.define('users', {
     defaultValue: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKRsW4WE_L7W_VkeJ2YXQEotSsPGDXbwPDhe_anhDdtyehO6bSjw'
   },
   level: {
-    type: Sequelize.FLOAT,
-    allowNull: true
+    type: Sequelize.INTEGER,
+    allowNull: true,
+    defaultValue: 1
   }
 });
 

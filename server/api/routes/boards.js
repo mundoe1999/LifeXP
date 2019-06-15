@@ -16,10 +16,10 @@ router.get('/', async(req, res, next) =>{
 
 router.get('/:boardId', async(req,res,next) =>{
   try{
-    const board = await Task.findByPk(req.params.boardId);
+    const board = await Board.findByPk(req.params.boardId);
     res.send(board);
   } catch(error){
-    console.log(`Unable to get Task ${req.params.boardId}`);
+    console.log(`Unable to get Board ${req.params.boardId}`);
   }
 });
 

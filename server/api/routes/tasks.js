@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { Task } = require('../../database');
 
-
 /*******************************************************
  * Getting state of tasks table
 ********************************************************/
@@ -23,7 +22,6 @@ router.get('/:taskId', async(req,res,next) =>{
     console.log(`Unable to get Task ${req.params.taskId}`);
   }
 });
-
 
 /*******************************************************
  *  Manipulating the state of the tasks table

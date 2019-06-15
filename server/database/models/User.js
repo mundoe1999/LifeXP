@@ -10,7 +10,7 @@ const User = db.define('users', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  user: {
+  username: {
     type: Sequelize.STRING,
     allowNull: false
   },
@@ -28,9 +28,8 @@ const User = db.define('users', {
     defaultValue: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKRsW4WE_L7W_VkeJ2YXQEotSsPGDXbwPDhe_anhDdtyehO6bSjw'
   },
   level: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    defaultValue: 'EASY'
+    type: Sequelize.FLOAT,
+    allowNull: true
   }
 });
 

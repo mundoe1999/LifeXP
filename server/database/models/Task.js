@@ -19,6 +19,10 @@ const Task = db.define('tasks', {
     type: Sequelize.STRING,
     allowNull: false,
     defaultValue: 'EASY'
+  },
+  user_id: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
   }
 });
 

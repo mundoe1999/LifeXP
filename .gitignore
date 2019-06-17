@@ -1,4 +1,4 @@
-#ignore these folders
-/node_modules
+#Don't track this content
+node_modules/
+package-lock.json
 
-#ignore these files

@@ -19,6 +19,14 @@ const Task = db.define('tasks', {
     type: Sequelize.STRING,
     allowNull: false,
     defaultValue: 'EASY'
+  },
+  boardId:{
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
+  userId:{
+    type: Sequelize.INTEGER,
+    allowNull: true
   }
 });
 

@@ -1,23 +1,61 @@
 const router = require('express').Router();
+const { User, Task, Board} = require('../../database');
 
 /*******************************************************
  * Getting state of user table
 ********************************************************/
 
 router.get('/', async(req, res, next) =>{
-    res.send('all Users');
+  try{
+    const allUsers = await User.findAll();
+    res.send(allUsers);
+  } catch(error){
+    console.log(error);
+    console.log("Unable to get Users");
+  }
 });
 
 router.get('/:userId', async(req,res,next) =>{
-    res.send(`Selecting User ${req.params.userId}`)
+  try{
+
+    const user = await User.findAll({
+      where: {id: req.params.userId}
+    })
+    res.send(user);
+  } catch(error){
+    console.log(`Unable to get User ${req.params.userId}`);
+    console.log(error);
+  }
 });
 
 router.get('/:userId/tasks', async(req,res,next) =>{
-  res.send(`Selecting all tasks attached to ${req.params.userId}`)
+  try{
+    const allTasksFromUser = await Task.findAll({
+      where: {
+        userId: req.params.userId
+      }
+    });
+    res.send(allTasksFromUser);
+  } catch(error){
+    console.log(`Unable to get User ${req.params.userId}'s Tasks`);
+  }
+
 });
 
 router.get('/:userId/boards', async(req,res,next) =>{
-  res.send(`Selecting all boards attached to ${req.params.userId}`)
+  
+  try{
+    const user = await User.findOne({
+      where: {id: req.params.userId}
+    })
+    console.log(user);
+    let boards = await user.getBoards();
+    res.send(boards);
+  } catch(error){
+    console.log(`Unable to get User ${req.params.userId}'s Boards`);
+    console.log(error);
+  }
+  
 });
 
 /*******************************************************

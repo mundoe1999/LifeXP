@@ -5,19 +5,19 @@ import './Style.css';
 import LoginComponent from './pages/Login';
 
 //Importing pages
-import Project from './pages/Project';
+import Project from './pages/Dashboard';
 
 
 
 class App extends Component {
 
   render() {
-    const ProjectComponent = () => (<Project />);
+    const DashboardComponent = () => (<Project />);
     return( 
 
         <Router>
           <Switch>
-            <Route exact path='/' render={ProjectComponent}/>
+            <Route exact path='/' render={DashboardComponent}/>
             <Route exact path='/Login' component={LoginComponent}/>
           </Switch>
         </Router>

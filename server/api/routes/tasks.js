@@ -55,7 +55,6 @@ router.post('/', async(req,res,next) => {
 
 router.put('/:taskId', async(req,res,next) =>{
   try{
-    console.log(req.body);
     const newTask = await Task.update(req.body, {where: {id: req.params.taskId}});
      res.send(newTask);
      console.log(`Task ${req.params.taskId} updated!`);

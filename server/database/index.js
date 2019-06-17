@@ -2,7 +2,7 @@ const db = require('./database');
 const Board = require('./models/Board');
 const User = require('./models/User');
 const Task = require('./models/Task');
-//const UserBoard = require('./models/UserBoard')
+const UserBoard = require('./models/UserBoard')
 
 //Setting up relations
 
@@ -37,4 +37,4 @@ Board.hasMany(Task);
 
 */
 
-module.exports = {db, Task, User, Board};
+module.exports = {db, Task, User, Board, UserBoard};

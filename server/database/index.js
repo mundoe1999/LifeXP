@@ -2,7 +2,7 @@ const db = require('./database');
 const Board = require('./models/Board');
 const User = require('./models/User');
 const Task = require('./models/Task');
-//const UserBoard = require('./models/UserBoard')
+const UserBoard = require('./models/UserBoard')
 
 //Setting up relations
 
@@ -24,8 +24,8 @@ Board.associate = (models) => {
 }
 */
 
-User.belongsToMany(Board, {as: 'boards', through: 'userBoard'});
-Board.belongsToMany(User, {as: 'users', through: 'userBoard'});
+User.belongsToMany(Board, {as: 'boards', through: 'userBoards'});
+Board.belongsToMany(User, {as: 'users', through: 'userBoards'});
 
 Task.belongsTo(Board);
 User.hasMany(Task);
@@ -37,4 +37,4 @@ Board.hasMany(Task);
 
 */
 
-module.exports = {db, Task, User, Board};
+module.exports = {db, Task, User, Board, UserBoard};

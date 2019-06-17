@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import NavBar from '../components/essentials/NavBar';
 import TitleDesc from '../components/dashboard/TitleDesc';
-import BoardCard from '../components/dashboard/BoardCard'
+import BoardCard from '../components/dashboard/BoardCard';
+import DashTable from '../components/dashboard/DashTable';
+
+// BoardCards will get replaced with BoardList when backend is ready
 
 class Project extends Component{
 
@@ -15,45 +18,14 @@ class Project extends Component{
 					<NavBar/>
 					<div className="DashboardPad">
 						<TitleDesc/>
-						<div class ="ScrollingFlexWrapper DisableScrollbars">
+						<div className="ScrollingFlexWrapper DisableScrollbars">
 							<BoardCard/><BoardCard/><BoardCard/><BoardCard/><BoardCard/><BoardCard/><BoardCard/><BoardCard/><BoardCard/><BoardCard/>
 						</div>
 					</div>
 				</div>
 				<div className="DashboardPad">
 					<h1>my tasks</h1>
-					<table>
- 						<tr>
-    						<th>board</th>
-    						<th>to-do</th>
- 	 						<th>level</th>
- 	 						<th>status</th>
-  						</tr>
-  						<tr>
-    						<td>Test</td>
-    						<td>play video games</td>
-    						<td>easy</td>
-    						<td>in-progress</td>
-  						</tr>
-  						<tr>
-    						<td>Test</td>
-    						<td>build rocket</td>
-    						<td>hard</td>
-    						<td>not started</td>
-  						</tr>
-  						<tr>
-    						<td>Test 2</td>
-    						<td>fight godzilla</td>
-    						<td>hard</td>
-    						<td>not started</td>
-  						</tr>
-  						<tr>
-    						<td>Test 3</td>
-    						<td>make potion</td>
-    						<td>moderate</td>
-    						<td>in-progress</td>
-  						</tr>
-					</table>
+					<DashTable/>
 				</div>
 			</div>
 			)

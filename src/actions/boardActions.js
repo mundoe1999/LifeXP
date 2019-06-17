@@ -4,8 +4,8 @@ import axios from 'axios';
 
 // ************************************ THUNK CREATORS ************************************
 
-export const fetchBoards = (id) => dispatch => {
-  fetch('https://jsonplaceholder.typicode.com/posts')
+export const fetchBoards = (userId) => dispatch => {
+  fetch('/api/' + userId + '/boards')
     .then(res => res.json())
     .then(boards =>
       dispatch({
@@ -15,8 +15,8 @@ export const fetchBoards = (id) => dispatch => {
     );
 };
 
-export const fetchBoard = (id) => dispatch => {
-  fetch('https://jsonplaceholder.typicode.com/posts')
+export const fetchBoard = (boardId) => dispatch => {
+  fetch('/api/boards' + boardId)
     .then(res => res.json())
     .then(board =>
       dispatch({

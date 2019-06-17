@@ -127,3 +127,14 @@ nav .flex-container > ul > li {
   text-decoration: none;
 
 }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}

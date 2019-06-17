@@ -12,7 +12,6 @@ class Project extends Component{
 				<NavBar/>
 				<div>
 					Test!
-					{/* <LoginForm/> */}
 				</div>
 			</div>
 			)

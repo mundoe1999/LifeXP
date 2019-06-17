@@ -1,28 +1,23 @@
- // actions/index.js
-// Namespace actions
+import {FETCH_USER, FETCH_BOARDS} from '../actions/types';
 
-// import axios from 'axios';
 
-export function fetchHome(){
+export function fetchUser(){
     return{
-        type:"FETCH_HOME",
+        type:"FETCH_USER",
         payload:{
-            firstName:"",
-            lastName:" "
+            userName:"",
         }
     }
 }
-// export function fetchHome(){
-//     return function(dispatch){
-//         axios.get("htt://")
-//         .then((res)=>{
-//             dispatch({
-//                 type:"FETCH_HOME",
-//                 payload:res.data
-//             })
-//         })
-//     }
-// }
+
+export function fetchBoards(){
+    return{
+        type:"FETCH_BOARDS",
+        payload:{
+            boards:[]
+        }
+    }
+}
 
 export const INCREMENT = 'counter/INCREMENT';
 

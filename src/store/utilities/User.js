@@ -17,24 +17,21 @@ const fetchUser= (user) => {
 }
 
 // ************************************ THUNK CREATORS ************************************
-export const fetchUserThheunk = (id) => (dispatch) => {
+export const fetchUserThunk = (id) => (dispatch) => {
     return axios
     //Modify api address here. Need proper api first
         .get("/api/users/" + id)
         .then(response => response.data)
         .then(data => dispatch(fetchUser(data)))
         .catch(err => console.log(err));
-} 
+}
 
-// ************************************ REDUCER ************************************
-export default (state = {users: [], singleUser: {}}, action) => {
-    switch (action.type) {
-        case FETCH_USER: 
-            return {
-                ...state, singleUSer: action.payload
-            } 
-        default:
-            return state;
-    }
+export const fetchBoardThunk = (id) => (dispatch) =>{
+    return axios
+    //api placeholder here
+        .get(/api/boards/ + id)
+        .then(response => response.data)
+        .then(data => dispatch(fetchBoard(data)))
+        .catch(err => console.log(err));
 }
 

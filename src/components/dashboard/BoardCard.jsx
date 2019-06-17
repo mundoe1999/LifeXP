@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { fetchBoards } from '../../actions/boardActions';
 
 const BoardCard = props => (
   <div className="BoardCard Card">

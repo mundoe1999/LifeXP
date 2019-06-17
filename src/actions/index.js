@@ -1,14 +1,5 @@
-import {FETCH_USER, FETCH_BOARDS} from '../actions/types';
+import {FETCH_BOARDS, NEW_BOARD, FETCH_BOARD} from '../actions/types';
 
-
-export function fetchUser(){
-    return{
-        type:"FETCH_USER",
-        payload:{
-            userName:"",
-        }
-    }
-}
 
 export function fetchBoards(){
     return{
@@ -18,6 +9,26 @@ export function fetchBoards(){
         }
     }
 }
+
+export function fetchBoard(){
+    return{
+        type: "FETCH_BOARD",
+        payload:{
+            board: {}
+        }
+    }
+}
+
+export function newBoard(){
+    return{
+        type:"NEW_BOARD",
+        payload:{
+            boards:[]
+        }
+    }
+}
+
+
 
 export const INCREMENT = 'counter/INCREMENT';
 

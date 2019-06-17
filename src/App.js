@@ -6,7 +6,7 @@ import LoginComponent from './pages/Login';
 
 //Importing pages
 import Project from './pages/Dashboard';
-
+import store from './store';
 
 
 class App extends Component {

@@ -29,8 +29,12 @@ const User = db.define('users', {
   },
   level: {
     type: Sequelize.INTEGER,
+<<<<<<< HEAD
     allowNull: true,
     defaultValue: 1
+=======
+    defaultValue: '1'
+>>>>>>> 63f05a2b24e41fcb9ceb9a8156d556a4582759f4
   }
 });
 

@@ -5,7 +5,7 @@ const router = require('express').Router();
 ********************************************************/
 
 router.get('/', async(req, res, next) =>{
-    res.send('all Users');
+    res.send('test');
 });
 
 router.get('/:boardId', async(req,res,next) =>{

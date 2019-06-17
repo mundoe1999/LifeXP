@@ -30,7 +30,8 @@ router.get('/:taskId', async(req,res,next) =>{
 ********************************************************/
 
 router.post('/', async(req,res,next) => {
-  //STUB
+  //let newTask = Task
+  console.log(test);
 });
 
 router.put('/:taskId', async(req,res,next) =>{

@@ -24,8 +24,8 @@ Board.associate = (models) => {
 }
 */
 
-User.belongsToMany(Board, {as: 'boards', through: 'userBoard'});
-Board.belongsToMany(User, {as: 'users', through: 'userBoard'});
+User.belongsToMany(Board, {as: 'boards', through: 'userBoards'});
+Board.belongsToMany(User, {as: 'users', through: 'userBoards'});
 
 Task.belongsTo(Board);
 User.hasMany(Task);

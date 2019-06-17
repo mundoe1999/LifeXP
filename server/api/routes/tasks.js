@@ -2,6 +2,20 @@ const router = require('express').Router();
 const { Task } = require('../../database');
 
 
+/*
+Task Table
+
+"name": String
+"desc": String, Optional
+"status": String, Optional
+  values: ['NOTSTARTED', 'STARTED', 'COMPLETE']
+"difficulty": String
+  values: ['EASY','MEDIUM','HARD']
+"boardId": Integer
+"userId": Integer, Optional
+
+*/
+
 /*******************************************************
  * Getting state of tasks table
 ********************************************************/

@@ -1,6 +1,19 @@
 const router = require('express').Router();
 const { User, Task, Board, UserBoard} = require('../../database');
 
+/*
+User Table
+
+"fname": String
+"lname": String
+"username": String
+"password": String
+"email": String
+  is: Email
+"image": String, Optional
+"level": Integer, Optional
+*/
+
 /*******************************************************
  * Getting state of user table
 ********************************************************/
@@ -48,7 +61,7 @@ router.get('/:userId/boards', async(req,res,next) =>{
     const user = await User.findOne({
       where: {id: req.params.userId}
     })
-    console.log(user);
+
     let boards = await user.getBoards();
     res.send(boards);
   } catch(error){
@@ -96,16 +109,25 @@ router.put('/:userId/add/:boardId', async(req,res,next) =>{
 
 router.delete('/:userId', async(req,res,next) =>{
   try{
-   //await Task.update({userId: null},{where:{userId:req.params.userId}});
-    /*
-    await User.destroy({
-      where: {
-        id: req.params.userId
+
+    await UserBoard.destroy({
+      where:{
+        userId: req.params.userId
       }
     });
-    */
-    
-    //res.send("Have ended this user's life");
+
+    await Task.update({
+          userId: null
+    }, {where: {id: req.params.userId}});
+
+    //In real life application, we would not delete this
+    await User.destroy({
+      where:{
+        id: req.params.userId
+      }
+    })
+
+    res.send("Have ended this user's life");
     console.log(`Successfully deleted User ${req.params.userId}`);
   } catch(error) {
     console.log(error);

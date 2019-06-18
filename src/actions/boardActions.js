@@ -35,6 +35,7 @@ export const fetchBoardThunk = (boardId) => (dispatch) => {
 
 export const fetchBoards = () => dispatch => {
   return axios
+  //change this when needed
     .get('https://jsonplaceholder.typicode.com/posts')
     .then(res => res.data)
     .then(boards => dispatch(fetchAllBoards(boards)))

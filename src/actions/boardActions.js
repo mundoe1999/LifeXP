@@ -1,29 +1,33 @@
-import { FETCH_BOARDS, NEW_BOARD } from './types';
+import { FETCH_BOARDS, ADD_BOARD, FETCH_ALL_BOARDS } from './types';
+import axios from 'axios';
+
+const fetchAllBoards = (boards) => {
+  return {
+    type: FETCH_ALL_BOARDS,
+    payload: boards
+  }
+}
+const addBoard = (board) =>{
+  return{
+      type: ADD_BOARD,
+      payload: board
+  }
+}
+
 
 export const fetchBoards = () => dispatch => {
-  fetch('https://jsonplaceholder.typicode.com/posts')
-    .then(res => res.json())
-    .then(boards =>
-      dispatch({
-        type: FETCH_BOARDS,
-        payload: boards
-      })
-    );
-};
+  return axios
+    .get('https://jsonplaceholder.typicode.com/posts')
+    .then(res => res.data)
+    .then(boards => dispatch(fetchAllBoards(boards)))
+    .catch(err => console.log(err));
+}
 
-export const createBoard = boardData => dispatch => {
-  fetch('https://jsonplaceholder.typicode.com/posts', {
-    method: 'BOARD',
-    headers: {
-      'content-type': 'application/json'
-    },
-    body: JSON.stringify(boardData)
-  })
-    .then(res => res.json())
-    .then(board =>
-      dispatch({
-        type: NEW_BOARD,
-        payload: board
-      })
-    );
-};
+
+export const addBoardThunk = (initial) => (dispatch) => {
+  return axios
+    .post(`/api/boards/`, initial)
+    .then(res => res.data)
+    .then(board => dispatch(addBoard(board)))
+    .catch(err => console.log(err));
+}

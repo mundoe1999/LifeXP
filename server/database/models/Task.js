@@ -33,6 +33,13 @@ const Task = db.define('tasks', {
   userId:{
     type: Sequelize.INTEGER,
     allowNull: true
+  },
+  color:{
+    type: Sequelize.STRING,
+    defaultValue: 'RED',
+    validate: {
+      isIn:[['RED','GREEN','BLUE','YELLOW','GREEN']]
+    }
   }
 });
 

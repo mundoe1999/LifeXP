@@ -1,40 +1,38 @@
+//Importing Library Components
 import React, { Component } from 'react';
-import NavBar from '../components/essentials/NavBar';
-import TitleDesc from '../components/dashboard/TitleDesc';
-import BoardCard from '../components/dashboard/BoardCard'
-import { fetchBoards } from '../actions/boardActions';
 import { connect } from 'react-redux';
-
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+//Importing Components
+import NavBar from '../components/essentials/NavBar';
+import TitleDesc from '../components/dashboard/TitleDesc';
+import BoardList from '../components/dashboard/BoardList';
 import DashTable from '../components/dashboard/DashTable';
+
+//Importing Actions
+import { fetchBoards } from '../actions/boardActions';
+
+
+
 
 // BoardCards will get replaced with BoardList when backend is ready
 
 class Project extends Component{
 	componentWillMount() {
 		this.props.fetchBoards();
-	  }	
-
+	}	
 
 	render(){
-		const boardItems = this.props.boards.map(board => (
-			<div key={board.id}>
-				<BoardCard id = {board.id} body = {board.body}/>
-			</div>
-		));
+
+    
 		return (
 			<div>
-				<head>
-					<link rel="stylesheet" type="text/css" href="../Style.css"/>
-				</head>
 				<div className="TopContainer">
 					<NavBar/>
 					<div className="DashboardPad">
 						<TitleDesc/>
-						<div class ="ScrollingFlexWrapper DisableScrollbars">
-							{boardItems}
-						</div>
+            <BoardList boards={this.props.boards} />
 					</div>
 				</div>
 				<div className="DashboardPad">

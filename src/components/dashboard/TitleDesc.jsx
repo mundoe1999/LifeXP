@@ -18,8 +18,10 @@ class TitleDesc extends Component{
 
 	//update with reduxy stuff
 	componentWillMount(){
-		this.state.title = "my boards"
-		this.state.desc = ""
+		this.setState({
+			title: "my boards",
+			desc: ""
+		});
 	}
 
 	render(){

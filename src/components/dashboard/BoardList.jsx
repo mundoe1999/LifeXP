@@ -11,16 +11,26 @@
 </div>
 */
 
-import React, {Component} from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+import {Link} from 'react-router-dom';
 import BoardCard from './BoardCard';
 
-class BoardList extends Component{
-	render(){
-		return(
-     	   	<div>
-        	
-        	</div>
-      	)
-	}
-}
+const BoardList = (props) => (
+	<div className = "ScrollingFlexWrapper DisableScrollbars">
+    <div className="BoardCard">
+      <Link to="/addBoard">
+        <span className="Card GREEN" style={{"text-align":"center"}}>
+          <h1>Add New Board</h1>
+          <h1 style={{"font-size":"8em","margin":"0"}}>+</h1>
+        </span>
+      </Link>
+    </div>
+    {
+      props.boards.map(board =>(
+        <BoardCard board={board} />
+      ))
+    }
+	</div>
+);
+
+export default BoardList;

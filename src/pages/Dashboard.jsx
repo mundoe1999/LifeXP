@@ -6,7 +6,7 @@ import DashTable from '../components/dashboard/DashTable';
 
 // BoardCards will get replaced with BoardList when backend is ready
 
-class Project extends Component{
+class Dash extends Component{
 
 	render(){
 		return (
@@ -32,4 +32,4 @@ class Project extends Component{
 	}
 }
 
-export default Project;
+export default Dash;

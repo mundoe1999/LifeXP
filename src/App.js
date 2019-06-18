@@ -5,17 +5,20 @@ import './Style.css';
 
 
 //Importing pages
-import Project from './pages/Dashboard';
+import Dash from './pages/Dashboard';
+import Project from './pages/Project';
 
 class App extends Component {
 
   render() {
-    const DashboardComponent = () => (<Project />);
+    const DashboardComponent = () => (<Dash />);
+    const ProjectComponent = () => (<Project />);
     return( 
 
         <Router>
           <Switch>
             <Route exact path='/' render={DashboardComponent}/>
+            <Route exact path='/projtest' render={ProjectComponent}/>
           </Switch>
         </Router>
 

@@ -1,9 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const NavBar = () => (
+class NavBar extends React.Component{
+	render(){
+		return(
   <nav>
   <div className="flex-container">
+  	<div className="nametext">Welcome, {this.props.name}!</div>
     <Link to='/'><div className="logo"><b>exp</b></div></Link>
     <ul>
 	  <li><Link to='/Logout'>Logout</Link></li>
@@ -11,7 +14,9 @@ const NavBar = () => (
     </ul>
   </div>
 </nav>
-);
+)
+}
+}
 
 export default NavBar;
 

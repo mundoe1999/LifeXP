@@ -18,8 +18,6 @@ class TitleDesc extends Component{
 	}
 
 	componentWillMount(){
-		this.state.title = "my boards"
-		this.state.desc = ""
 	}
 
 	render(){

@@ -3,26 +3,27 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './Style.css';
 import LoginComponent from './pages/Login';
+import { Provider } from 'react-redux';
 
 //Importing pages
 import Project from './pages/Dashboard';
 import store from './store';
-import { Provider } from 'react-redux';
 
 
 class App extends Component {
 
   render() {
     const DashboardComponent = () => (<Project />);
-    return (
+    return( 
       <Provider store={store}>
         <Router>
           <Switch>
-            <Route exact path='/' render={DashboardComponent} />
-            <Route exact path='/Login' component={LoginComponent} />
+            <Route exact path='/' render={DashboardComponent}/>
+            <Route exact path='/Login' component={LoginComponent}/>
           </Switch>
         </Router>
-      </Provider>
+        </Provider>
+
     )
   }
 }

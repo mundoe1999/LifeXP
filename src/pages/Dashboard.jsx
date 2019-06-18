@@ -7,6 +7,10 @@ import { connect } from 'react-redux';
 
 import PropTypes from 'prop-types';
 
+import DashTable from '../components/dashboard/DashTable';
+
+// BoardCards will get replaced with BoardList when backend is ready
+
 class Project extends Component{
 	componentWillMount() {
 		this.props.fetchBoards();
@@ -35,6 +39,7 @@ class Project extends Component{
 				</div>
 				<div className="DashboardPad">
 					<h1>my tasks</h1>
+					<DashTable/>
 				</div>
 			</div>
 			)

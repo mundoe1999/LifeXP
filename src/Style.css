@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Quantico:700&display=swap');
 
+html {
+min-width: 550px;
+position: relative;
+}
+
 body {
   background-color: white;
 }
@@ -14,6 +19,15 @@ body {
   margin-bottom:20px;
   margin-right:100px;
   box-shadow: 10px 10px rgba(200, 200, 200,0.4);
+}
+
+.BoardCard h1{
+  font-size: 35px;
+}
+
+.BoardCard h4 {
+  font-size: 20px;
+  font-weight: normal;
 }
 
 .ScrollingFlexWrapper {
@@ -35,6 +49,7 @@ body {
 
 .DashboardPad{
   padding-left: 30px;
+  padding-right: 30px
 }
 
 .DisableScrollbars::-webkit-scrollbar {
@@ -55,6 +70,8 @@ body {
     rgba(252, 252, 252,0.8) 4px,
     rgba(252, 252, 252,0.8) 8px
   );
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 
 nav {
@@ -82,8 +99,7 @@ nav .logo{
   font-size: 2.7em;
   font-family: 'Quantico', sans-serif;
   position: absolute;
-  left: 50%;
-  margin-left: -50px;
+  left:40%;
   top:0%;
 }
 
@@ -138,4 +154,13 @@ nav .flex-container > ul > li {
   margin: auto;
   position: relative;
   padding: 5px;
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }

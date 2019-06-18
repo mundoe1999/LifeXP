@@ -1,5 +1,13 @@
-import { FETCH_BOARDS, ADD_BOARD, FETCH_ALL_BOARDS } from './types';
+import { FETCH_BOARD, ADD_BOARD, FETCH_ALL_BOARDS } from './types';
 import axios from 'axios';
+
+
+const fetchBoard = (board) =>{
+  return{
+      type: FETCH_BOARD,
+      payload: board
+  }
+}
 
 const fetchAllBoards = (boards) => {
   return {
@@ -12,6 +20,16 @@ const addBoard = (board) =>{
       type: ADD_BOARD,
       payload: board
   }
+}
+
+
+///THUNK CREATORS
+export const fetchBoardThunk = (boardId) => (dispatch) => {
+  return axios
+    .get(`/api/boards/${boardId}`)
+    .then(res => res.data)
+    .then(board => dispatch(fetchBoard(board)))
+    .catch(err => console.log(err));
 }
 
 

@@ -1,4 +1,5 @@
 #Don't track this content
 node_modules/
 package-lock.json
+.DS_Store
 

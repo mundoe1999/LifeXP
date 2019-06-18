@@ -10,15 +10,18 @@ body {
 }
 
 .BoardCard{
-  background-color: rgba(240,100,100,1);
-  width:280px;
-  min-width: 280px;
-  height:300px;
-  text-align:left;
-  padding:10px;
+
   margin-bottom:20px;
   margin-right:100px;
-  box-shadow: 10px 10px rgba(200, 200, 200,0.4);
+
+}
+
+.BoardCard a{
+  text-decoration: none;
+  color: #000;
+}
+.BoardCard a:visited{
+  color: black;
 }
 
 .BoardCard h1{
@@ -37,15 +40,42 @@ body {
   margin-bottom: 20px;
   width: 100%;
   -webkit-overflow-scrolling: touch;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+
+}
 
 .Card {
-    flex: 0 0 auto;
-    flex-shrink:0;
-  }
+  background-color: rgba(240,100,100,1);
+
+  /*Flex box elements*/
+  flex: 0 0 auto;
+  flex-shrink:0;
+
+  /*Card Size*/
+  display: block;
+  width:280px;
+  min-width: 280px;
+  height:300px;
+  text-align:left;
+  padding:10px;
+  box-shadow: 10px 10px rgba(200, 200, 200,0.4);
+
 }
+
+.RED {background-color: rgba(240,100,100,1)}
+.RED:hover {background-color: rgb(197, 71, 71)}
+
+.BLUE {background-color: rgb(184,221,238)}
+.BLUE:hover {background-color: rgb(159, 208, 231)}
+
+.ORANGE {background-color: rgb(240,170,67)}
+.ORANGE:hover {background-color: rgb(228, 150, 33)}
+
+.YELLOW {background-color: rgb(253,237,131)}
+.YELLOW:hover {background-color: rgb(223, 202, 66)}
+
+.GREEN {background-color: rgb(213,223,113)}
+.GREEN:hover {background-color: rgb(200, 211, 77)}
+
 
 .DashboardPad{
   padding-left: 30px;

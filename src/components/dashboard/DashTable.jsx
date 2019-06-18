@@ -58,12 +58,18 @@ class DashTable extends Component{
 		return(
 			<div>
 				<table>
-					<tr>
-    					<th>board</th>
-    					<th>to-do</th>
- 	 					<th>level</th>
- 	 					<th>status</th>
-  					</tr>
+        <thead>
+          <tr>
+            <th>board</th>
+            <th>to-do</th>
+            <th>level</th>
+            <th>status</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+
   				</table>
   			</div>
   			)

@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css?family=Quantico:700&display=swap');
+
+html {
+min-width: 550px;
+position: relative;
+}
+
+body {
+  background-color: white;
+}
+
+.BoardCard{
+  background-color: rgba(240,100,100,1);
+  width:280px;
+  min-width: 280px;
+  height:300px;
+  text-align:left;
+  padding:10px;
+  margin-bottom:20px;
+  margin-right:100px;
+  box-shadow: 10px 10px rgba(200, 200, 200,0.4);
+}
+
+.BoardCard h1{
+  font-size: 35px;
+}
+
+.BoardCard h4 {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.ScrollingFlexWrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  margin-bottom: 20px;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+.Card {
+    flex: 0 0 auto;
+    flex-shrink:0;
+  }
+}
+
+.DashboardPad{
+  padding-left: 30px;
+  padding-right: 30px
+}
+
+.DisableScrollbars::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* Chrome/Safari/Webkit */
+}
+
+.DisableScrollbars {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+
+.TopContainer {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(238, 238, 238,0.8),
+    rgba(238, 238, 238,0.8) 4px,
+    rgba(252, 252, 252,0.8) 4px,
+    rgba(252, 252, 252,0.8) 8px
+  );
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+nav {
+  /*Position of Nav*/
+  z-index: 20;
+  position: sticky;
+  top: 0;
+
+  /*Size of Nav*/
+  padding: 1.5em 0em;
+  width: 100%;
+
+
+  /*Nav Color*/
+  background-color: #FFF;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: 0px 5px rgba(0,0,0,0.25);
+  opacity: 1;
+}
+
+nav .logo{
+  display: block;
+  padding: 0em 1.2em;
+  font-size: 2.7em;
+  font-family: 'Quantico', sans-serif;
+  position: absolute;
+  left:40%;
+  top:0%;
+}
+
+nav a{
+  text-decoration: none;
+}
+nav a:visited{
+  color: black;
+}
+
+nav > .flex-container{
+      /*Setting Flex display properties*/
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+      justify-content: space-between;
+      text-align: center;
+  
+}
+
+nav .flex-container > ul { 
+  
+  margin: 0;
+  list-style: none;
+
+  margin-right: 40px; 
+
+    /*Setting Flex display properties*/
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: baseline;
+
+}
+
+nav .flex-container > ul > li { 
+  padding-left: 1em;
+  font-size: 1.3em;
+  color: #000;
+  opacity: 1;
+
+  text-decoration: none;
+
+}
+
+.editForm-wrapper {
+  max-width: 480px;
+  margin: 60px auto;
+}
+
+.form .input_wrapper {
+  width: 100%;
+  margin: auto;
+  position: relative;
+  padding: 5px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}

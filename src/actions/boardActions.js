@@ -25,7 +25,7 @@ const removeBoard = (boardId) => {
 
 
 // ************************************ THUNK CREATORS ************************************
-export const fetchAllBoards = () => dispatch => {
+export const fetchAllBoardsThunk = () => dispatch => {
   console.log('dispatch')
   return axios
   .get('/api/boards')
@@ -33,6 +33,16 @@ export const fetchAllBoards = () => dispatch => {
     .then(data => dispatch(fetchBoards(data)))
     .catch(err => console.log(err));
 };
+
+export const fetchBoardThunk = () => dispatch => {
+  console.log('dispatch')
+  return axios
+  .get('/api/boards')
+    .then(res => res.data)
+    .then(data => dispatch(fetchBoards(data)))
+    .catch(err => console.log(err));
+};
+
 
 export const addNewBoardThunk = (board) => (dispatch) => {
   return axios 

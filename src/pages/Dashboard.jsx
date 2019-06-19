@@ -11,7 +11,7 @@ import BoardList from '../components/dashboard/BoardList';
 import DashTable from '../components/dashboard/DashTable';
 
 //Importing Actions
-import { fetchAllBoards } from '../actions/boardActions';
+import { fetchAllBoardsThunk } from '../actions/boardActions';
 import { async } from 'q';
 
 
@@ -28,7 +28,7 @@ class Project extends Component{
 	}
 	componentWillMount() {
 		console.log('fetching: ')
-		this.props.fetchAllBoards();
+		this.props.fetchAllBoardsThunk();
 	}	
 
 componentDidMount(){
@@ -80,4 +80,4 @@ Project.propTypes = {
   });
   
 
-export default connect(mapStateToProps, { fetchAllBoards })(Project);
+export default connect(mapStateToProps, { fetchAllBoardsThunk })(Project);

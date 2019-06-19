@@ -10,6 +10,8 @@ User.belongsToMany(Board, {as: 'boards', through: 'userBoards'});
 Board.belongsToMany(User, {as: 'users', through: 'userBoards'});
 
 Task.belongsTo(Board);
+Board.hasMany(Task);
+
 User.hasMany(Task);
 
 

@@ -8,15 +8,12 @@ import React, { Component } from 'react';
 class LoginForm extends Component {
 
 	constructor (props) {
-
 		super(props);
 
 		this.state = {
-
 			userName: "",
 			password: "",
 			displayErrorMessage: false
-
 		}
 
 		this.handleInputChange = this.handleInputChange.bind(this);
@@ -37,35 +34,21 @@ class LoginForm extends Component {
 
 	render () {
 		return (
-			<div className = "editForm-wrapper">
-				<h1>Log In</h1>
+    <div id = "loginForm">
 
-				<div className = "editForm form">
-					<div className = "input_wrapper">
-						<label className = "add_item_label" htmlFor = "userName">
-							Username:
-						</label>
-						<input type = "text" name = "userName" placeholder="Username" onChange = { this.handleInputChange } />
-					</div>
+    <form onSubmit={this.submitData} className="signIn">
+      <strong>Username:</strong>
+      <br/>
+      <input type="text" name="userName" value={this.state.userName} onChange={this.handleInputChange}></input>
+      <br/>
+      <strong>Password:</strong> 
+      <br/>
+      <input type="password" name="password" value={this.state.password} onChange={this.handleInputChange}></input>
+      <br/>
+      <input type="submit" value="Sign in"></input>
+    </form>
+    </div>
 
-					<div className = "input_wrapper">
-						<label className = "add_item_label" htmlFor = "password">
-							Password:
-						</label>
-						<input type = "text" name = "password" placeholder="Password" onChange = { this.handleInputChange } />
-					</div>
-					<div className = "btn_controls_wrapper sm">
-						{ (this.state.displayErrorMessage) 
-							&& (
-							<p className = "error_sm">
-								Please Fill All Fields
-							</p>
-							) 
-						}
-						<button type = "submit" onClick = { this.submitData } className = "btn_link">Login</button>
-					</div>
-				</div>
-			</div>
 
 		)
 

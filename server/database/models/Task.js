@@ -38,7 +38,7 @@ const Task = db.define('tasks', {
     type: Sequelize.STRING,
     defaultValue: 'RED',
     validate: {
-      isIn:[['RED','GREEN','BLUE','YELLOW','GREEN']]
+      isIn:[['RED','GREEN','BLUE','YELLOW','ORANGE']]
     }
   }
 });

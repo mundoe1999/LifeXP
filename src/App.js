@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './Style.css';
 import LoginComponent from './pages/Login';
+import TestForm from './pages/TestForm';
 import { Provider } from 'react-redux';
 
 //Importing pages
@@ -19,6 +20,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path='/' render={DashboardComponent}/>
+            <Route path='/test' component={TestForm}/>
             <Route exact path='/Login' component={LoginComponent}/>
           </Switch>
         </Router>

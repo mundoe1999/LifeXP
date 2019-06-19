@@ -7,20 +7,22 @@ import TestForm from './pages/TestForm';
 import { Provider } from 'react-redux';
 
 //Importing pages
-import Project from './pages/Dashboard';
-import store from './store';
+import Dash from './pages/Dashboard';
+import Project from './pages/Project';
 
+import store from './store';
 
 class App extends Component {
 
   render() {
-    const DashboardComponent = () => (<Project />);
+    const DashboardComponent = () => (<Dash />);
+    const ProjectComponent = () => (<Project />);
     return( 
       <Provider store={store}>
         <Router>
           <Switch>
             <Route exact path='/' render={DashboardComponent}/>
-            <Route path='/test' component={TestForm}/>
+            <Route exact path='/projtest' render={ProjectComponent}/>
             <Route exact path='/Login' component={LoginComponent}/>
           </Switch>
         </Router>

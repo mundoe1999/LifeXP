@@ -62,6 +62,25 @@ body {
 
 }
 
+
+.Container {
+    width:500px;
+}
+
+.LeftElement {
+    display: inline-block;
+    left: 0;
+}
+
+.RightElement {
+    display: inline-block;
+    position: absolute;
+    right: 10;
+    padding-top: 70px;
+    text-align: center;
+    font-size:1.5em;
+}
+
 .RED {background-color: rgba(240,100,100,1)}
 .RED:hover {background-color: rgb(197, 71, 71)}
 
@@ -81,6 +100,11 @@ body {
 .DashboardPad{
   padding-left: 30px;
   padding-right: 30px
+}
+
+.ProjectPad{
+  padding-left: 200px;
+  padding-right: 200px
 }
 
 .DisableScrollbars::-webkit-scrollbar {
@@ -132,6 +156,11 @@ nav .logo{
   position: absolute;
   left:40%;
   top:0%;
+}
+
+nav .nametext{
+  font-size:1.2em;
+  padding-left: 26px;
 }
 
 nav a{

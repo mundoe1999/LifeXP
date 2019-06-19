@@ -77,7 +77,28 @@ export default DashTable;
   						</tr>
 					</table>
 
-					// Insert the below code at end of table when backend is ready
+const DashTable = (props) => (
+	<table>
+		<thead>
+			<tr>
+				<th>board</th>
+				<th>to-do</th>
+				<th>Difficulty</th>
+				<th>status</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Robinson Family</th>
+				<th>Clean the Floors</th>
+				<th>Hard</th>
+				<th>Not Started</th>
+				<th>Edit</th>
+			</tr>
+		</tbody>
+	</table>
+);
 
 					{
            				this.props.allTasks.map((task) => {

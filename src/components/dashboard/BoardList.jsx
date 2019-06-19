@@ -18,7 +18,7 @@ import BoardCard from './BoardCard';
 const BoardList = (props) => (
 	<div className = "ScrollingFlexWrapper DisableScrollbars">
     <div className="BoardCard">
-      <Link to="/addBoard">
+      <Link to="/CreateBoard">
         <span className="Card GREEN" style={{"text-align":"center"}}>
           <h1>Add New Board</h1>
           <h1 style={{"font-size":"8em","margin":"0"}}>+</h1>

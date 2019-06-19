@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { FETCH_BOARDS, ADD_NEW_BOARD, REMOVE_BOARD } from './types';
 import axios from 'axios';
 
@@ -32,6 +33,18 @@ export const fetchAllBoardsThunk = () => dispatch => {
     .then(res => res.data)
     .then(data => dispatch(fetchBoards(data)))
     .catch(err => console.log(err));
+=======
+import { FETCH_BOARDS, NEW_BOARD } from './types';
+export const fetchBoards = () => dispatch => {
+  fetch('https://jsonplaceholder.typicode.com/posts')
+    .then(res => res.json())
+    .then(boards =>
+      dispatch({
+        type: FETCH_BOARDS,
+        payload: boards
+      })
+    );
+>>>>>>> 824801be70d2c77b9a8d9f21f1989b394726c6de
 };
 
 export const fetchBoardThunk = () => dispatch => {

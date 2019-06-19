@@ -9,6 +9,7 @@ body {
   background-color: white;
 }
 
+/* Card stuff*/
 .BoardCard{
 
   margin-bottom:20px;
@@ -61,6 +62,25 @@ body {
 
 }
 
+
+.Container {
+    width:500px;
+}
+
+.LeftElement {
+    display: inline-block;
+    left: 0;
+}
+
+.RightElement {
+    display: inline-block;
+    position: absolute;
+    right: 10;
+    padding-top: 70px;
+    text-align: center;
+    font-size:1.5em;
+}
+
 .RED {background-color: rgba(240,100,100,1)}
 .RED:hover {background-color: rgb(197, 71, 71)}
 
@@ -80,6 +100,11 @@ body {
 .DashboardPad{
   padding-left: 30px;
   padding-right: 30px
+}
+
+.ProjectPad{
+  padding-left: 200px;
+  padding-right: 200px
 }
 
 .DisableScrollbars::-webkit-scrollbar {
@@ -133,6 +158,11 @@ nav .logo{
   top:0%;
 }
 
+nav .nametext{
+  font-size:1.2em;
+  padding-left: 26px;
+}
+
 nav a{
   text-decoration: none;
 }
@@ -174,17 +204,7 @@ nav .flex-container > ul > li {
 
 }
 
-.editForm-wrapper {
-  max-width: 480px;
-  margin: 60px auto;
-}
 
-.form .input_wrapper {
-  width: 100%;
-  margin: auto;
-  position: relative;
-  padding: 5px;
-}
 table {
   border-collapse: collapse;
   width: 100%;
@@ -194,4 +214,59 @@ th, td {
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ddd;
+}
+
+/* Form Stuff */
+#loginPage{
+  min-height: 100vh;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#loginForm {
+  min-width: 300px;
+  padding: 2em;
+  margin: 1em auto;
+  border: 1px solid #ccc;
+  border-radius: 5%;
+  background-color: #fff;
+}
+
+#loginPage h1{
+  text-align: center
+}
+
+#loginForm form{
+  text-align: left;
+  max-width: 250px;
+  margin: auto;
+}
+
+#loginForm input{
+  width: 100%;
+  margin: 1em 0em;
+  padding: 0.5em;
+  padding-right: 0em;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  box-shadow: 0;
+  font-size: 1em;
+}
+
+
+
+#loginForm input[type="submit"]{
+  color: white;
+  background-image: linear-gradient(rgb(113, 223, 122), rgb(88, 179, 96));
+  
+  margin: 1em auto;
+  margin-bottom: 2em;
+  transition: border 0.2s;
+}
+
+#loginForm input[type="submit"]:hover{
+  border: 1px solid #000;
+
 }

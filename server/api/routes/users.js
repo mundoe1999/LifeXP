@@ -32,43 +32,25 @@ router.get('/:userId', async(req,res,next) =>{
   try{
 
     const user = await User.findAll({
-      where: {id: req.params.userId}
-    })
+      where: {id: req.params.userId},
+      attributes: ['fname', 'lname','image','level'],
+
+      include: [{
+        model: Board,
+        as: 'boards',
+        attributes: ["id", "name",'desc'],
+        through: {attributes:[]}
+      },{model:Task}],
+
+    });
+
+    console.log("Got User");
     res.send(user);
+
   } catch(error){
     console.log(`Unable to get User ${req.params.userId}`);
     console.log(error);
   }
-});
-
-router.get('/:userId/tasks', async(req,res,next) =>{
-  try{
-    const allTasksFromUser = await Task.findAll({
-      where: {
-        userId: req.params.userId
-      }
-    });
-    res.send(allTasksFromUser);
-  } catch(error){
-    console.log(`Unable to get User ${req.params.userId}'s Tasks`);
-  }
-
-});
-
-router.get('/:userId/boards', async(req,res,next) =>{
-  
-  try{
-    const user = await User.findOne({
-      where: {id: req.params.userId}
-    })
-
-    let boards = await user.getBoards();
-    res.send(boards);
-  } catch(error){
-    console.log(`Unable to get User ${req.params.userId}'s Boards`);
-    console.log(error);
-  }
-  
 });
 
 /*******************************************************

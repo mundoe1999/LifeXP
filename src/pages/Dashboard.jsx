@@ -1,7 +1,6 @@
 //Importing Library Components
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 //Importing Components
@@ -13,7 +12,6 @@ import DashTable from '../components/dashboard/DashTable';
 //Importing Actions
 import { fetchAllBoardsThunk } from '../actions/boardActions';
 import { fetchAllTasksThunk } from '../actions/taskActions';
-import { async } from 'q';
 
 
 
@@ -71,12 +69,6 @@ console.log("tasks: ", this.props.tasks)
 		)
 	}
 }
-
-Project.propTypes = {
-	fetchBoards: PropTypes.func.isRequired,
-	boards: PropTypes.array.isRequired,
-	newPost: PropTypes.object
-};
 
 const mapStateToProps = state => ({
 	boards: state.boards.items,

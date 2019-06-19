@@ -5,6 +5,9 @@ import BoardCard from '../components/dashboard/BoardCard';
 import ProjTable from '../components/project/ProjTable';
 import Leaderboard from '../components/project/Leaderboard';
 
+/*
+
+*/
 class Project extends Component{
 /*
 	componentWillMount(){
@@ -20,18 +23,25 @@ class Project extends Component{
 				<div className="TopContainer">
 					<NavBar name="Rupert"/>
 					<div className="ProjectPad">
-						<div className="Container">
 							<div className="LeftElement">
 								<TitleDesc/>
-								<BoardCard/>
+								<BoardCard board={{"id":"Robinson Family","body":"Test"}}/>
 							</div>
 							<div className="RightElement">
 								<Leaderboard/>
 							</div>
-						</div>
 					</div>
 					<br/>
+					<footer>
+					<ul>
+						<li>+ Add User</li>
+						<li>- Remove User</li>
+						<li>+ Add Task</li>
+					</ul>
+					</footer>
+
 				</div>
+
 				<div className="DashboardPad">
 					<h1>group tasks</h1>
 					<ProjTable/>

@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 // Text in h1 and h4 will be replaced when backend is ready
-
+//STUB
 const BoardCard = props => (
   <div className="BoardCard">
     <Link to='board/numberHERE'>

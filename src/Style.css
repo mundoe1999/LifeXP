@@ -11,10 +11,8 @@ body {
 
 /* Card stuff*/
 .BoardCard{
-
   margin-bottom:20px;
   margin-right:100px;
-
 }
 
 .BoardCard a{
@@ -72,10 +70,12 @@ body {
     left: 0;
 }
 
+.LeftElement .BoardCard{
+  margin: 0;
+}
+
 .RightElement {
     display: inline-block;
-    position: absolute;
-    right: 10;
     padding-top: 70px;
     text-align: center;
     font-size:1.5em;
@@ -104,7 +104,11 @@ body {
 
 .ProjectPad{
   padding-left: 200px;
-  padding-right: 200px
+  padding-right: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap
 }
 
 .DisableScrollbars::-webkit-scrollbar {
@@ -117,6 +121,74 @@ body {
   -ms-overflow-style: none;  /* IE 10+ */
 }
 
+.Modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.ModalBody {
+  padding: 2px 16px;
+}
+
+.ModalContent {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  top:-500px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.6s;
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.6s;
+}
+
+@keyframes animatetop {
+  from {top: -1000px; opacity: 0}
+  to {top: -500px; opacity: 1}
+}
+
+@-webkit-keyframes animatetop {
+  from {top:-1000px; opacity:0} 
+  to {top:-500px; opacity:1}
+}
+
+.ModalClose {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.ModalClose:hover,
+.ModalClose:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.ModalHeader {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+.ModalFooter {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
 .TopContainer {
   background: repeating-linear-gradient(
     -45deg,
@@ -127,6 +199,7 @@ body {
   );
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
+  padding-bottom: .5em;
 }
 
 nav {
@@ -269,4 +342,29 @@ th, td {
 #loginForm input[type="submit"]:hover{
   border: 1px solid #000;
 
+}
+
+/*Footer for Top Container*/
+
+.TopContainer footer ul{
+  padding-top: 2em;
+  padding-bottom: 2em;
+  padding-left: 5%;
+  margin: 0;
+
+  list-style: none;
+
+    /*Setting Flex display properties*/
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.TopContainer footer ul li{
+  padding-right: 2em;
+  font-size: 1.6em;
+  color: #000;
+  opacity: 1;
+
+  text-decoration: none;
 }

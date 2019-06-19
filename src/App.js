@@ -9,7 +9,6 @@ import { Provider } from 'react-redux';
 //Importing pages
 import Dash from './pages/Dashboard';
 import Project from './pages/Project';
-
 import store from './store';
 
 class App extends Component {

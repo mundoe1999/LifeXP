@@ -8,7 +8,7 @@ const BoardCard = props => (
     <Link to='board/numberHERE'>
       <span className='Card RED'>
       <h1>{props.board.id}</h1>
-  	<h4>{props.board.body}</h4>
+    	<h4>{props.board.body}</h4>
       </span>
     </Link>
 

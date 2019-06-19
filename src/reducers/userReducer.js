@@ -1,6 +1,8 @@
 
 
 import { FETCH_USERS, ADD_NEW_USER, FETCH_USER, REMOVE_USER } from '../actions/types';
+
+//initial state for the actions is empty, use this to store payload
 const initialState = {
   items: [],
   item: {}
@@ -9,7 +11,7 @@ const initialState = {
 
 /*
 User Reducer: Reads the action type and executes some non-mutating
-data processing. Returns a copy of a new state to 
+data processing. Returns a copy of a new state to allow modification of the store
 */
 export default function (state = initialState, action) {
   switch (action.type) {

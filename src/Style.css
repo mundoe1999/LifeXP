@@ -11,10 +11,8 @@ body {
 
 /* Card stuff*/
 .BoardCard{
-
   margin-bottom:20px;
   margin-right:100px;
-
 }
 
 .BoardCard a{
@@ -72,10 +70,12 @@ body {
     left: 0;
 }
 
+.LeftElement .BoardCard{
+  margin: 0;
+}
+
 .RightElement {
     display: inline-block;
-    position: absolute;
-    right: 10;
     padding-top: 70px;
     text-align: center;
     font-size:1.5em;
@@ -104,7 +104,11 @@ body {
 
 .ProjectPad{
   padding-left: 200px;
-  padding-right: 200px
+  padding-right: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap
 }
 
 .DisableScrollbars::-webkit-scrollbar {
@@ -127,6 +131,7 @@ body {
   );
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
+  padding-bottom: .5em;
 }
 
 nav {
@@ -269,4 +274,29 @@ th, td {
 #loginForm input[type="submit"]:hover{
   border: 1px solid #000;
 
+}
+
+/*Footer for Top Container*/
+
+.TopContainer footer ul{
+  padding-top: 2em;
+  padding-bottom: 2em;
+  padding-left: 5%;
+  margin: 0;
+
+  list-style: none;
+
+    /*Setting Flex display properties*/
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.TopContainer footer ul li{
+  padding-right: 2em;
+  font-size: 1.6em;
+  color: #000;
+  opacity: 1;
+
+  text-decoration: none;
 }

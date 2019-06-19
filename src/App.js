@@ -9,7 +9,9 @@ import { Provider } from 'react-redux';
 //Importing pages
 import Dash from './pages/Dashboard';
 import Project from './pages/Project';
+import SignupComponent from './pages/Signup';
 import store from './store';
+
 
 class App extends Component {
 
@@ -21,9 +23,10 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path='/' render={DashboardComponent}/>
-            <Route exact path='/board' render={ProjectComponent}/>
+            <Route path='/board/:boardId' render={ProjectComponent}/>
             <Route exact path='/Login' component={LoginComponent}/>
             <Route exact path='/CreateBoard' component={addBoardComponent}/>
+            <Route exact path='/Signup' component={SignupComponent}/>
           </Switch>
         </Router>
         </Provider>

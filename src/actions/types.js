@@ -7,8 +7,9 @@ export const REMOVE_BOARD = 'REMOVE_BOARD';
 
 //Users:
 export const FETCH_USER = 'FETCH_USER';
-export const NEW_USER = 'NEW_USER';
+export const ADD_NEW_USER = 'ADD_NEW_USER';
 export const FETCH_USERS = 'FETCH_USERS';
+export const REMOVE_USER = 'REMOVE_USER';
 
 
 //Tasks:

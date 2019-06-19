@@ -12,6 +12,7 @@ class NavBar extends React.Component{
 	  <li><Link to='/Logout'>Logout</Link></li>
       <li><Link to='/'>Dash</Link></li>
       <li><Link to='/Login'> Login</Link></li>
+      <li><Link to='/Signup'>Signup</Link></li>
     </ul>
   </div>
 </nav>

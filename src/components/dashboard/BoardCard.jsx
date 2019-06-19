@@ -1,5 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {withRouter} from 'react-router';
+
+
 
 const BoardCard = props => (
   <div className="BoardCard">
@@ -14,4 +17,4 @@ const BoardCard = props => (
 
 );
 
-export default BoardCard;
+export default withRouter(BoardCard);

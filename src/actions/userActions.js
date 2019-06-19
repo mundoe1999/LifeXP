@@ -1,44 +1,72 @@
-import { FETCH_USER, FETCH_USERS ,NEW_USER } from './types';
+import { FETCH_USERS, ADD_NEW_USER, REMOVE_USER, FETCH_USER } from './types';
 import axios from 'axios';
+
+const fetchUsers = (user) => {
+  return{
+    type: FETCH_USERS,
+    payload: user
+  }
+}
+
+const fetchUser = (user) => {
+  return{
+    type: FETCH_USER,
+    payload: user
+  }
+}
+
+const addNewUser = (newUser) => {
+  return {
+      type: ADD_NEW_USER,
+      payload: newUser
+  }
+}
+
+const removeUser = (userId) => {
+  return{
+    type: REMOVE_USER,
+    payload: userId
+  }
+}
+
 
 
 // ************************************ THUNK CREATORS ************************************
-
-export const fetchUsers = () => dispatch => {
-  fetch('/api/users')
-    .then(res => res.json())
-    .then(users =>
-      dispatch({
-        type: FETCH_USERS,
-        payload: users
-      })
-    );
+export const fetchAllUsersThunk = () => dispatch => {
+  console.log('dispatch')
+  return axios
+  .get('/api/users')
+    .then(res => res.data)
+    .then(data => dispatch(fetchUsers(data)))
+    .catch(err => console.log(err));
 };
 
-export const fetchUser = (userId) => dispatch => {
-  fetch('/api/users' + userId)
-    .then(res => res.json())
-    .then(user =>
-      dispatch({
-        type: FETCH_USER,
-        payload: user
-      })
-    );
+export const fetchUserThunk = (userId) => dispatch => {
+  console.log('dispatch')
+  return axios
+  .get(`/api/users/${userId}`)
+    .then(res => res.data)
+    .then(data => dispatch(fetchUser(data)))
+    .catch(err => console.log(err));
 };
 
-export const newUser = userData => dispatch => {
-  fetch('/api/users', {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json'
-    },
-    body: JSON.stringify(userData)
-  })
-    .then(res => res.json())
-    .then(newUser =>
-      dispatch({
-        type: NEW_USER,
-        payload: newUser
-      })
-    );
-};
+
+export const addNewUserThunk = (user) => (dispatch) => {
+  return axios 
+      // axios.post because we are ADDING a new user
+      // remember, axios can GET, POST, PUT, DELETE
+      .post("/api/users", user)
+      .then(response => response.data)
+      .then(data => dispatch(addNewUser()))
+      .catch(err => console.log(err));
+}
+
+export const deleteUserThunk = (userId) => (dispatch) => {
+  return axios 
+      // axios.post because we are ADDING a new user
+      // remember, axios can GET, POST, PUT, DELETE
+      .delete("/api/users", userId)
+      .then(response => response.data)
+      .then(data => dispatch(removeUser()))
+      .catch(err => console.log(err));
+}

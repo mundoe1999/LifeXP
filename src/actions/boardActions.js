@@ -44,7 +44,7 @@ export const addNewBoardThunk = (board) => (dispatch) => {
       .catch(err => console.log(err));
 }
 
-export const deleteNewBoardThunk = (boardId) => (dispatch) => {
+export const deleteBoardThunk = (boardId) => (dispatch) => {
   return axios 
       // axios.post because we are ADDING a new board
       // remember, axios can GET, POST, PUT, DELETE

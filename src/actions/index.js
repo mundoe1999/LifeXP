@@ -1,7 +1,7 @@
 import {FETCH_BOARDS, NEW_BOARD, FETCH_BOARD} from '../actions/types';
 
 
-export function fetchBoards(){
+export function fetchAllBoardsThunk(){
     return{
         type:"FETCH_BOARDS",
         payload:{

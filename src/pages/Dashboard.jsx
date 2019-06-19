@@ -11,7 +11,8 @@ import BoardList from '../components/dashboard/BoardList';
 import DashTable from '../components/dashboard/DashTable';
 
 //Importing Actions
-import { fetchBoards } from '../actions/boardActions';
+import { fetchAllBoards } from '../actions/boardActions';
+import { async } from 'q';
 
 
 
@@ -19,9 +20,32 @@ import { fetchBoards } from '../actions/boardActions';
 // BoardCards will get replaced with BoardList when backend is ready
 
 class Project extends Component{
+	constructor(props){
+		super(props)
+		this.state={
+			data: ' '
+		};
+	}
 	componentWillMount() {
-		this.props.fetchBoards();
+		console.log('fetching: ')
+		this.props.fetchAllBoards();
 	}	
+
+componentDidMount(){
+	this.callBackendAPI()
+	.then(res=>this.setState({data:res.express}))
+	.catch(error=>console.log(error));
+}
+
+callBackendAPI=async()=>{
+	const response=await fetch('/');
+	console.log("response: ", response)
+	const body=await response.json();
+	if(response.status!==200){
+		throw Error(body.message)
+	}
+	return body;
+};
 
 	render(){
 
@@ -32,6 +56,7 @@ class Project extends Component{
 					<NavBar/>
 					<div className="DashboardPad">
 						<TitleDesc/>
+						{console.log(this.props.boards)}
             <BoardList boards={this.props.boards} />
 					</div>
 				</div>
@@ -56,4 +81,4 @@ Project.propTypes = {
   });
   
 
-export default connect(mapStateToProps, { fetchBoards })(Project);
+export default connect(mapStateToProps, { fetchAllBoards })(Project);

@@ -1,5 +1,4 @@
 import React from 'react';
-import NavBar from '../components/essentials/NavBar';
 import LoginForm from '../components/essentials/LoginForm';
 import {Link} from 'react-router-dom';
 

@@ -10,19 +10,20 @@ import React, { Component } from 'react';
 // should display ALL users in that board, and be
 // able to select one of them, or none
 
-class CreateTaskForm extends Component {
+class EditTaskForm extends Component {
 
 	constructor (props) {
 		super(props);
-
+		//For STUB, should contain current
+		//Information of Board
 		this.state = {
-			name: "",
-			desc: "",
-			status: "NOTSTARTED",
-			difficulty: "EASY",
-			color: 'RED',
-			boardId: 1,
-			userId: null,
+			name: "STUB",
+			desc: "sTUB",
+			status: "STUB",
+			difficulty: "STUB",
+			color: "STUB",
+			boardId: "STUB",
+			userId: "STUB",
 
 			displayErrorMessage: false
 		}
@@ -41,7 +42,7 @@ class CreateTaskForm extends Component {
 	submitData (e) {
 		e.preventDefault();
 
-		//Creates Task
+		//Creates Temporary Task
 		let newTask = {
 			name: this.state.name,
 			desc: this.state.desc,
@@ -52,7 +53,7 @@ class CreateTaskForm extends Component {
 			userId: this.state.userId
 		}
 
-		//Use POST and STORE task
+		//Use PUT and UPDATE task
 		console.log(newTask);
 	}
 
@@ -105,4 +106,4 @@ class CreateTaskForm extends Component {
 	}
 
 } 
-export default CreateTaskForm;
+export default EditTaskForm;

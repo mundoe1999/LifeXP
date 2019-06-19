@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import CreateTaskForm from '../components/essentials/CreateTaskForm'
+import EditBoardForm from '../components/essentials/EditBoard'
 
 class TestForm extends Component{
   constructor(){
@@ -16,8 +15,8 @@ class TestForm extends Component{
     return(
       <div>
       <h1>Create Board</h1>
-      <CreateTaskForm />
-      <button onClick={this.goBack}>Return </button>
+      <EditBoardForm />
+      <button onClick={this.goBack}>Cancel </button>
     </div>
     )
   }

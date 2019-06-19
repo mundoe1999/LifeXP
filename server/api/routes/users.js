@@ -28,6 +28,20 @@ router.get('/', async(req, res, next) =>{
   }
 });
 
+router.get('/searchUsers', async(req,res,next) =>{
+  try{
+    //Search user by username
+    const Allusers = await User.findAll({
+      where: {username: req.body.username},
+      attributes: ['fname','lname','username','image','level']
+    });
+    res.send(Allusers);
+  }catch(error){
+    console.log(error);
+  }
+});
+
+
 router.get('/:userId', async(req,res,next) =>{
   try{
 
@@ -48,10 +62,11 @@ router.get('/:userId', async(req,res,next) =>{
     res.send(user);
 
   } catch(error){
-    console.log(`Unable to get User ${req.params.userId}`);
     console.log(error);
   }
 });
+
+
 
 /*******************************************************
  *  Manipulating the state of the user table

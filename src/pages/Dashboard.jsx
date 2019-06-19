@@ -56,7 +56,6 @@ callBackendAPI=async()=>{
 					<NavBar/>
 					<div className="DashboardPad">
 						<TitleDesc/>
-						{console.log(this.props.boards)}
             <BoardList boards={this.props.boards} />
 					</div>
 				</div>

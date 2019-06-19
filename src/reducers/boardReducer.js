@@ -1,4 +1,4 @@
-import { FETCH_BOARDS, NEW_BOARD, FETCH_BOARD } from '../actions/types';
+import { FETCH_BOARDS, ADD_NEW_BOARD, FETCH_BOARD } from '../actions/types';
 const initialState = {
   items: [],
   item: {}
@@ -11,7 +11,7 @@ export default function(state = initialState, action) {
         ...state,
         items: action.payload
       };
-    case NEW_BOARD:
+    case ADD_NEW_BOARD:
       return {
         ...state,
         item: action.payload

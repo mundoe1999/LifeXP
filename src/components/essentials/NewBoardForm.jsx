@@ -24,7 +24,8 @@ class NewBoardForm extends Component {
 
     const board = {
       name: this.state.name,
-      desc: this.state.desc
+      desc: this.state.desc,
+      image: this.state.image
     };
     this.props.newBoard(board);
     console.log("adding: ", board.name, '\n', board.desc);
@@ -53,6 +54,17 @@ class NewBoardForm extends Component {
               name="desc"
               onChange={this.onChange}
               value={this.state.desc}
+            />
+          </div>
+          <br />
+          <div>
+            <label>ImageUrl: </label>
+            <br />
+            <input
+              type="text"
+              name="image"
+              onChange={this.onChange}
+              value={this.state.image}
             />
           </div>
           <br />

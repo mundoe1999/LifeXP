@@ -179,14 +179,14 @@ body {
 
 .ModalHeader {
   padding: 2px 16px;
-  background-color: #5cb85c;
-  color: white;
+  background-color: #b3b3b3;
+  color: black;
 }
 
 .ModalFooter {
   padding: 2px 16px;
-  background-color: #5cb85c;
-  color: white;
+  background-color: #b3b3b3;
+  color: black;
 }
 
 .TopContainer {

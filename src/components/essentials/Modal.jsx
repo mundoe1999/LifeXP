@@ -3,6 +3,8 @@
 // Like this: <button id="ModalButton">Edit</button>
 
 import React from 'react';
+import AddUserForm from './AddUserForm'
+import CreateTaskForm from './CreateTaskForm'
 
 class Modal extends React.Component{
 	constructor(props){
@@ -28,29 +30,50 @@ class Modal extends React.Component{
 			}
 		}
 		modal.style.display = "none";
+		console.log(this.loadForm);
 	}
 
-render(){
-	return(
-		<div id="myModal" className="ModalContent">
+	render(){
+		if(this.props.form == "task"){
+			return(
+				<div id="myModal" className="ModalContent">
 
-			<div className="ModalHeader">
-    		<span className="ModalClose">&times;</span>
-    		<h2>Edit Task</h2>
-  		</div>
+					<div className="ModalHeader">
+		    		<span className="ModalClose">&times;</span>
+		    		<h2>Edit Task</h2>
+		  		</div>
 
-  		<div className="ModalBody">
-    		<p>to-do: <input/></p>
-    		<p>difficulty: <input/></p>
-    		<p>status: <input/></p>
-  		</div>
+		  		<div className="ModalBody">
+		    		<CreateTaskForm/>
+		  		</div>
 
-  		<div className="ModalFooter">
-	    	<h3><button id="save">Save changes</button></h3>
- 	 		</div>
+		  		<div className="ModalFooter">
+			    	<h3><button id="save">Save changes</button></h3>
+		 	 		</div>
 
-		</div>
-		)
+				</div>
+				)
+		}
+		if(this.props.form == "user"){
+			return(
+				<div id="myModal" className="ModalContent">
+
+					<div className="ModalHeader">
+		    		<span className="ModalClose">&times;</span>
+		    		<h2>Edit Task</h2>
+		  		</div>
+
+		  		<div className="ModalBody">
+		    		<AddUserForm/>
+		  		</div>
+
+		  		<div className="ModalFooter">
+			    	<h3><button id="save">Save changes</button></h3>
+		 	 		</div>
+
+				</div>
+				)
+		}
 	}
 }
 

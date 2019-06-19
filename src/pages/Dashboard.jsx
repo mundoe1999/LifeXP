@@ -1,7 +1,7 @@
 //Importing Library Components
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 //Importing Components
@@ -12,6 +12,7 @@ import DashTable from '../components/dashboard/DashTable';
 
 //Importing Actions
 import { fetchAllBoardsThunk } from '../actions/boardActions';
+import { fetchAllTasksThunk } from '../actions/taskActions';
 import { async } from 'q';
 
 
@@ -19,52 +20,55 @@ import { async } from 'q';
 
 // BoardCards will get replaced with BoardList when backend is ready
 
-class Project extends Component{
-	constructor(props){
+class Project extends Component {
+	constructor(props) {
 		super(props)
-		this.state={
+		this.state = {
 			data: ' '
 		};
 	}
 	componentWillMount() {
-		console.log('fetching: ')
-		this.props.fetchAllBoardsThunk();
-	}	
-
-componentDidMount(){
-	this.callBackendAPI()
-	.then(res=>this.setState({data:res.express}))
-	.catch(error=>console.log(error));
-}
-
-callBackendAPI=async()=>{
-	const response=await fetch('/');
-	console.log("response: ", response)
-	const body=await response.json();
-	if(response.status!==200){
-		throw Error(body.message)
+		console.log('fetching: ');
+		this.props.fetchBoards();
+		this.props.fetchTasks();
 	}
-	return body;
-};
 
-	render(){
+	componentDidMount() {
+		this.callBackendAPI()
+			.then(res => this.setState({ data: res.express }))
+			.catch(error => console.log(error));
 
-    
+		console.log("data call from callBackend: ", this.data)
+	}
+
+	callBackendAPI = async () => {
+		const response = await fetch('/');
+		console.log("response: ", response)
+		const body = await response.json();
+		if (response.status !== 200) {
+			throw Error(body.message)
+		}
+		return body;
+	};
+
+	render() {
+console.log("tasks: ", this.props.tasks)
+
 		return (
 			<div>
 				<div className="TopContainer">
-					<NavBar/>
+					<NavBar />
 					<div className="DashboardPad">
-						<TitleDesc/>
-            <BoardList boards={this.props.boards} />
+						<TitleDesc />
+						<BoardList boards={this.props.boards} />
 					</div>
 				</div>
 				<div className="DashboardPad">
 					<h1>my tasks</h1>
-					<DashTable/>
+					<DashTable tasks={this.props.tasks} />
 				</div>
 			</div>
-			)
+		)
 	}
 }
 
@@ -72,12 +76,20 @@ Project.propTypes = {
 	fetchBoards: PropTypes.func.isRequired,
 	boards: PropTypes.array.isRequired,
 	newPost: PropTypes.object
-  };
+};
 
-  const mapStateToProps = state => ({
+const mapStateToProps = state => ({
 	boards: state.boards.items,
+	tasks: state.tasks.items,
 	newBoard: state.boards.item
-  });
-  
+});
 
-export default connect(mapStateToProps, { fetchAllBoardsThunk })(Project);
+function mapDispatch(dispatch) {
+	return {
+		fetchBoards: () => dispatch(fetchAllBoardsThunk()),
+		fetchTasks: () => dispatch(fetchAllTasksThunk())
+	}
+}
+
+
+export default connect(mapStateToProps, mapDispatch)(Project);

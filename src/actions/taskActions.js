@@ -25,8 +25,8 @@ const removeTask = (taskId) => {
 
 
 // ************************************ THUNK CREATORS ************************************
-export const fetchAllTasks = () => dispatch => {
-  console.log('dispatch')
+export const fetchAllTasksThunk = () => dispatch => {
+  console.log('taskDispatch')
   return axios
   .get('/api/tasks')
     .then(res => res.data)

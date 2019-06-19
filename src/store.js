@@ -2,11 +2,22 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
+
+
+/*Files involved with the store:
+Reducers are located in ./src/reducers, the rootReducer is created and exported from
+./reducers/index.js
+
+Thunks are located in ./src/actions
+./types.js exports all the types of actions for both the thunks and reducers
+
+
+
 //Initial state for setting up the store. Initially an empty object
 const initialState = {};
 
 
-/*array of middlewear, currently only contains thunk which allows
+/*array of middleware, currently only contains thunk which allows
 the action creators to return a function as an action
 */
 const middleware = [thunk];

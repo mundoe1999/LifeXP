@@ -1,9 +1,16 @@
-import { FETCH_BOARDS, ADD_NEW_BOARD, REMOVE_BOARD } from './types';
+import { FETCH_BOARDS, ADD_NEW_BOARD, REMOVE_BOARD, FETCH_BOARD } from './types';
 import axios from 'axios';
 
 const fetchBoards = (board) => {
   return{
     type: FETCH_BOARDS,
+    payload: board
+  }
+}
+
+const fetchBoard = (board) => {
+  return{
+    type: FETCH_BOARD,
     payload: board
   }
 }
@@ -34,12 +41,12 @@ export const fetchAllBoardsThunk = () => dispatch => {
     .catch(err => console.log(err));
 };
 
-export const fetchBoardThunk = () => dispatch => {
+export const fetchBoardThunk = (boardId) => dispatch => {
   console.log('dispatch')
   return axios
-  .get('/api/boards')
+  .get(`/api/boards/${boardId}`)
     .then(res => res.data)
-    .then(data => dispatch(fetchBoards(data)))
+    .then(data => dispatch(fetchBoard(data)))
     .catch(err => console.log(err));
 };
 

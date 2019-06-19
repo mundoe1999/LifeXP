@@ -18,7 +18,7 @@ import { fetchAllTasksThunk } from '../actions/taskActions';
 
 // BoardCards will get replaced with BoardList when backend is ready
 
-class Project extends Component {
+class Dash extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -84,4 +84,4 @@ function mapDispatch(dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispatch)(Project);
+export default connect(mapStateToProps, mapDispatch)(Dash);

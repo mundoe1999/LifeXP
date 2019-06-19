@@ -10,7 +10,7 @@ Reducers are located in ./src/reducers, the rootReducer is created and exported 
 
 Thunks are located in ./src/actions
 ./types.js exports all the types of actions for both the thunks and reducers
-
+*/
 
 
 //Initial state for setting up the store. Initially an empty object

@@ -1,33 +1,9 @@
-import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
+import React from 'react';
 
-class TitleDesc extends Component{
 
-	constructor(props){
-		super(props);
-		this.state={
-			title: '',
-			desc: ''
-		}
-	}
-
-	componentDidMount(){
-		// this.props.fetchTitleAndDesc();
-		// Maybe fetchProjectInfo()?
-	}
-
-	componentWillMount(){
-	}
-
-	render(){
-		return(
-			<div>
-				<h1>{this.state.title}</h1>
-				<h4>{this.state.desc}</h4>
-			</div>
-			)
-	}
-}
-
+const TitleDesc = () => (
+	<div>
+		<h1>My Boards</h1>
+	</div>
+);
 export default TitleDesc;

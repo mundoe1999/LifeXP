@@ -9,16 +9,20 @@ body {
   background-color: white;
 }
 
+/* Card stuff*/
 .BoardCard{
-  background-color: rgba(240,100,100,1);
-  width:280px;
-  min-width: 280px;
-  height:300px;
-  text-align:left;
-  padding:10px;
+
   margin-bottom:20px;
   margin-right:100px;
-  box-shadow: 10px 10px rgba(200, 200, 200,0.4);
+
+}
+
+.BoardCard a{
+  text-decoration: none;
+  color: #000;
+}
+.BoardCard a:visited{
+  color: black;
 }
 
 .BoardCard h1{
@@ -37,15 +41,27 @@ body {
   margin-bottom: 20px;
   width: 100%;
   -webkit-overflow-scrolling: touch;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+
+}
 
 .Card {
-    flex: 0 0 auto;
-    flex-shrink:0;
-  }
+  background-color: rgba(240,100,100,1);
+
+  /*Flex box elements*/
+  flex: 0 0 auto;
+  flex-shrink:0;
+
+  /*Card Size*/
+  display: block;
+  width:280px;
+  min-width: 280px;
+  height:300px;
+  text-align:left;
+  padding:10px;
+  box-shadow: 10px 10px rgba(200, 200, 200,0.4);
+
 }
+
 
 .Container {
     width:500px;
@@ -64,6 +80,22 @@ body {
     text-align: center;
     font-size:1.5em;
 }
+
+.RED {background-color: rgba(240,100,100,1)}
+.RED:hover {background-color: rgb(197, 71, 71)}
+
+.BLUE {background-color: rgb(184,221,238)}
+.BLUE:hover {background-color: rgb(159, 208, 231)}
+
+.ORANGE {background-color: rgb(240,170,67)}
+.ORANGE:hover {background-color: rgb(228, 150, 33)}
+
+.YELLOW {background-color: rgb(253,237,131)}
+.YELLOW:hover {background-color: rgb(223, 202, 66)}
+
+.GREEN {background-color: rgb(213,223,113)}
+.GREEN:hover {background-color: rgb(200, 211, 77)}
+
 
 .DashboardPad{
   padding-left: 30px;
@@ -172,6 +204,7 @@ nav .flex-container > ul > li {
 
 }
 
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -181,4 +214,59 @@ th, td {
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ddd;
+}
+
+/* Form Stuff */
+#loginPage{
+  min-height: 100vh;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#loginForm {
+  min-width: 300px;
+  padding: 2em;
+  margin: 1em auto;
+  border: 1px solid #ccc;
+  border-radius: 5%;
+  background-color: #fff;
+}
+
+#loginPage h1{
+  text-align: center
+}
+
+#loginForm form{
+  text-align: left;
+  max-width: 250px;
+  margin: auto;
+}
+
+#loginForm input{
+  width: 100%;
+  margin: 1em 0em;
+  padding: 0.5em;
+  padding-right: 0em;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  box-shadow: 0;
+  font-size: 1em;
+}
+
+
+
+#loginForm input[type="submit"]{
+  color: white;
+  background-image: linear-gradient(rgb(113, 223, 122), rgb(88, 179, 96));
+  
+  margin: 1em auto;
+  margin-bottom: 2em;
+  transition: border 0.2s;
+}
+
+#loginForm input[type="submit"]:hover{
+  border: 1px solid #000;
+
 }

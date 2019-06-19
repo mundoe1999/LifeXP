@@ -2,6 +2,20 @@ const router = require('express').Router();
 const { Task } = require('../../database');
 
 
+/*
+Task Table
+
+"name": String
+"desc": String, Optional
+"status": String, Optional
+  values: ['NOTSTARTED', 'STARTED', 'COMPLETE']
+"difficulty": String
+  values: ['EASY','MEDIUM','HARD']
+"boardId": Integer
+"userId": Integer, Optional
+
+*/
+
 /*******************************************************
  * Getting state of tasks table
 ********************************************************/
@@ -55,7 +69,6 @@ router.post('/', async(req,res,next) => {
 
 router.put('/:taskId', async(req,res,next) =>{
   try{
-    console.log(req.body);
     const newTask = await Task.update(req.body, {where: {id: req.params.taskId}});
      res.send(newTask);
      console.log(`Task ${req.params.taskId} updated!`);

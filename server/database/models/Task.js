@@ -13,12 +13,18 @@ const Task = db.define('tasks', {
   status: {
     type: Sequelize.STRING,
     allowNull: true,
-    defaultValue: 'NOTSTARTED'
+    defaultValue: 'NOTSTARTED',
+    validate: {
+      isIn: [['NOTSTARTED','STARTED','COMPLETE']]
+    }
   },
   difficulty: {
     type: Sequelize.STRING,
     allowNull: false,
-    defaultValue: 'EASY'
+    defaultValue: 'EASY',
+    validate: {
+      isIn: [['EASY', 'MEDIUM', 'HARD']]
+    }
   },
   boardId:{
     type: Sequelize.INTEGER,
@@ -27,6 +33,13 @@ const Task = db.define('tasks', {
   userId:{
     type: Sequelize.INTEGER,
     allowNull: true
+  },
+  color:{
+    type: Sequelize.STRING,
+    defaultValue: 'RED',
+    validate: {
+      isIn:[['RED','GREEN','BLUE','YELLOW','ORANGE']]
+    }
   }
 });
 

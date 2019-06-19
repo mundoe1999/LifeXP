@@ -1,5 +1,4 @@
 import { FETCH_BOARDS, NEW_BOARD } from './types';
-
 export const fetchBoards = () => dispatch => {
   fetch('https://jsonplaceholder.typicode.com/posts')
     .then(res => res.json())

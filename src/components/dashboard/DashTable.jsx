@@ -1,79 +1,36 @@
-/*					<table>
- 						<tr>
-    						<th>board</th>
-    						<th>to-do</th>
- 	 						<th>level</th>
- 	 						<th>status</th>
-  						</tr>
-  						<tr>
-    						<td>Test</td>
-    						<td>play video games</td>
-    						<td>easy</td>
-    						<td>in-progress</td>
-  						</tr>
-  						<tr>
-    						<td>Test</td>
-    						<td>build rocket</td>
-    						<td>hard</td>
-    						<td>not started</td>
-  						</tr>
-  						<tr>
-    						<td>Test 2</td>
-    						<td>fight godzilla</td>
-    						<td>hard</td>
-    						<td>not started</td>
-  						</tr>
-  						<tr>
-    						<td>Test 3</td>
-    						<td>make potion</td>
-    						<td>moderate</td>
-    						<td>in-progress</td>
-  						</tr>
-					</table>
+import React from 'react';
+import Modal from '../essentials/Modal';
+//import { connect } from 'react-redux';
 
-					// Insert the below code at end of table when backend is ready
-
-					{
-           				this.props.allTasks.map((task) => {
-              				return(
-                				<tr>
-                 					<td>{task['board']}</td>
-               				   		<td>{task['todo']}</td>
-                					<td>{task['level']}</td>
-                					<td>{task['status']}</td>
-               					</tr>
-                
-            				)
-            			})
-        			}
-*/
-
-import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
-
-class DashTable extends Component{
+class DashTable extends React.Component{
+	constructor(props){
+		super(props);
+	}
 
 	render(){
-		return(
-			<div>
-				<table>
-        <thead>
-          <tr>
-            <th>board</th>
-            <th>to-do</th>
-            <th>level</th>
-            <th>status</th>
-          </tr>
-        </thead>
-        <tbody>
-          
-        </tbody>
-
-  				</table>
-  			</div>
-  			)
-	}
+	return(
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<th>board</th>
+					<th>to-do</th>
+					<th>Difficulty</th>
+					<th>status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>Robinson Family</th>
+					<th>Clean the Floors</th>
+					<th>Hard</th>
+					<th>Not Started</th>
+				</tr>
+			</tbody>
+		</table>
+		<Modal/>
+	</div>
+	)}
 }
 
 export default DashTable;

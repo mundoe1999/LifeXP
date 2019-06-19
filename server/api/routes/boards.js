@@ -25,33 +25,24 @@ router.get('/', async(req, res, next) =>{
 
 router.get('/:boardId', async(req,res,next) =>{
   try{
-    const board = await Board.findByPk(req.params.boardId);
+    const board = await Board.findByPk(req.params.boardId,
+      {
+        include: [{
+          model: Task
+        },
+        {
+          model: User,
+          as: 'users',
+          attributes: ['fname','lname','username','level'],
+          through: {attributes:[]}
+        }],
+      });
     res.send(board);
     console.log(`Selecting Board ${req.params.boardId}`);
   }catch(error){
     console.log(error);
   }
     
-});
-
-router.get('/:boardId/tasks', async(req,res,next) =>{
-  try{
-    const tasks = await Task.findAll({where:{boardId: req.params.boardId}});
-    res.send(tasks);
-  } catch(error) {
-    console.log(error)
-  }
-
-});
-
-router.get('/:boardId/users', async(req,res,next) =>{
-  try{
-    const board = await Board.findByPk(req.params.boardId);
-    const users = await board.getUsers();
-    res.send(users);
-  } catch(error) {
-    console.log(error)
-  }
 });
 
 /*******************************************************

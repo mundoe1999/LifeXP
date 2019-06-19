@@ -1,7 +1,6 @@
 //Importing Library Components
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 //Importing Components
@@ -17,14 +16,11 @@ import { fetchBoards } from '../actions/boardActions';
 
 
 // BoardCards will get replaced with BoardList when backend is ready
-
-class Project extends Component{
-	componentWillMount() {
+class Dash extends Component{
+	componentWillMount(){
 		this.props.fetchBoards();
-	}	
-
+	}
 	render(){
-
     
 		return (
 			<div>
@@ -44,7 +40,8 @@ class Project extends Component{
 	}
 }
 
-Project.propTypes = {
+
+Dash.propTypes = {
 	fetchBoards: PropTypes.func.isRequired,
 	boards: PropTypes.array.isRequired,
 	newPost: PropTypes.object
@@ -56,4 +53,5 @@ Project.propTypes = {
   });
   
 
-export default connect(mapStateToProps, { fetchBoards })(Project);
+export default connect(mapStateToProps,{ fetchBoards })(Dash);
+

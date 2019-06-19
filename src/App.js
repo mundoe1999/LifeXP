@@ -9,7 +9,6 @@ import { Provider } from 'react-redux';
 import Project from './pages/Dashboard';
 import store from './store';
 
-
 class App extends Component {
 
   render() {

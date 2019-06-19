@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 
 const SignupComponent = () => (
   <div  id="loginPage">
-    <h1>Sign in to LifeXP</h1>
+    <h1>Signup to LifeXP</h1>
     <SignupForm />
   </div>
 );

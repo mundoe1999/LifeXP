@@ -1,5 +1,13 @@
+//Import the list of actions from type for task actions
 import { FETCH_TASKS, ADD_NEW_TASK, REMOVE_TASK } from './types';
 import axios from 'axios';
+
+
+/*Helper functions used in the thunks, they create actions containing
+the action type and payload
+
+Interacts with the reducer, as the type matches a type in the reducer
+*/
 
 const fetchTasks = (task) => {
   return{

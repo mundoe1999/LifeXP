@@ -4,6 +4,10 @@ const initialState = {
   item: {}
 };
 
+/*
+User Reducer: Reads the action type and executes some non-mutating
+data processing. Returns a copy of a new state to 
+*/
 export default function (state = initialState, action) {
   switch (action.type) {
     case FETCH_TASKS:

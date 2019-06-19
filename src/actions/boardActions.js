@@ -1,6 +1,13 @@
+//Import the list of actions from type for board actions
 import { FETCH_BOARDS, ADD_NEW_BOARD, REMOVE_BOARD, FETCH_BOARD } from './types';
 import axios from 'axios';
 
+
+/*Helper functions used in the thunks, they create actions containing
+the action type and payload
+
+Interacts with the reducer, as the type matches a type in the reducer
+*/
 const fetchBoards = (board) => {
   return{
     type: FETCH_BOARDS,

@@ -17,9 +17,10 @@ import { fetchBoards } from '../actions/boardActions';
 
 // BoardCards will get replaced with BoardList when backend is ready
 class Dash extends Component{
-
+	componentWillMount(){
+		this.props.fetchBoards();
+	}
 	render(){
-
     
 		return (
 			<div>
@@ -39,7 +40,6 @@ class Dash extends Component{
 	}
 }
 
-export default Dash;
 
 Dash.propTypes = {
 	fetchBoards: PropTypes.func.isRequired,
@@ -53,5 +53,5 @@ Dash.propTypes = {
   });
   
 
-export default connect(mapStateToProps, { fetchBoards })(Dash);
+export default connect(mapStateToProps,{ fetchBoards })(Dash);
 

@@ -33,7 +33,6 @@ const removeUser = (userId) => {
 
 // ************************************ THUNK CREATORS ************************************
 export const fetchAllUsersThunk = () => dispatch => {
-  console.log('dispatch')
   return axios
   .get('/api/users')
     .then(res => res.data)
@@ -42,7 +41,6 @@ export const fetchAllUsersThunk = () => dispatch => {
 };
 
 export const fetchUserThunk = (userId) => dispatch => {
-  console.log('dispatch')
   return axios
   .get(`/api/users/${userId}`)
     .then(res => res.data)

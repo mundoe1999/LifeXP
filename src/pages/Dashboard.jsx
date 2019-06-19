@@ -14,10 +14,6 @@ import { fetchAllBoardsThunk } from '../actions/boardActions';
 import { fetchAllTasksThunk } from '../actions/taskActions';
 
 
-
-
-// BoardCards will get replaced with BoardList when backend is ready
-
 class Dash extends Component {
 	constructor(props) {
 		super(props)
@@ -25,20 +21,26 @@ class Dash extends Component {
 			data: ' '
 		};
 	}
+
+	/*
+	Call the respective thunks to connect to the backend database. Mapped at
+	the called here
+	*/
 	componentWillMount() {
 		console.log('fetching: ');
 		this.props.fetchBoards();
 		this.props.fetchTasks();
 	}
 
+	//componentDidMount and callBackendAPI connect the backend to the
+	//I am not sure how necessary this is with an actual server deployment
 	componentDidMount() {
 		this.callBackendAPI()
 			.then(res => this.setState({ data: res.express }))
 			.catch(error => console.log(error));
-
-		console.log("data call from callBackend: ", this.data)
 	}
 
+	//connects the backend with the frontend
 	callBackendAPI = async () => {
 		const response = await fetch('/');
 		console.log("response: ", response)
@@ -50,8 +52,6 @@ class Dash extends Component {
 	};
 
 	render() {
-console.log("tasks: ", this.props.tasks)
-
 		return (
 			<div>
 				<div className="TopContainer">

@@ -23,7 +23,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path='/' render={DashboardComponent}/>
-            <Route path='/board/:boardId' render={ProjectComponent}/>
+            <Route path='/board/:boardId' component={ProjectComponent}/>
             <Route exact path='/Login' component={LoginComponent}/>
             <Route exact path='/CreateBoard' component={addBoardComponent}/>
             <Route exact path='/Signup' component={SignupComponent}/>

@@ -7,10 +7,11 @@ import ProjTable from '../components/project/ProjTable';
 import Leaderboard from '../components/project/Leaderboard';
 import { fetchAllBoardsThunk } from '../actions/boardActions';
 import { fetchAllTasksThunk } from '../actions/taskActions';
-import { Route, NavLink, Redirect } from 'react-router-dom';
+import { Link, Route, NavLink, Redirect } from 'react-router-dom';
 /*
 
 */
+
 class Project extends Component {
 	constructor(props) {
 		super(props)
@@ -20,7 +21,6 @@ class Project extends Component {
 		};
 	}
 	componentWillMount() {
-		console.log('fetching: ');
 		this.props.fetchBoards();
 		this.props.fetchTasks();
 	}
@@ -36,7 +36,7 @@ class Project extends Component {
 	//   }
 
 	render() {
-		console.log("****ID", this.name);
+		//console.log("****ID", this.props.match.params.boardId);
 		return (
 			<div>
 				<head>

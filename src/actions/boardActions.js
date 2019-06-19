@@ -33,7 +33,6 @@ const removeBoard = (boardId) => {
 
 // ************************************ THUNK CREATORS ************************************
 export const fetchAllBoardsThunk = () => dispatch => {
-  console.log('dispatch')
   return axios
   .get('/api/boards')
     .then(res => res.data)
@@ -42,7 +41,6 @@ export const fetchAllBoardsThunk = () => dispatch => {
 };
 
 export const fetchBoardThunk = (boardId) => dispatch => {
-  console.log('dispatch')
   return axios
   .get(`/api/boards/${boardId}`)
     .then(res => res.data)

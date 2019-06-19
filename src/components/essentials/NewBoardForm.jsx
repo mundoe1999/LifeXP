@@ -28,7 +28,6 @@ class NewBoardForm extends Component {
       image: this.state.image
     };
     this.props.newBoard(board);
-    console.log("adding: ", board.name, '\n', board.desc);
   }
 
   render() {

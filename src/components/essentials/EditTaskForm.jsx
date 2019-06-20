@@ -33,7 +33,7 @@ class EditTaskForm extends Component {
 	}
 
 	handleInputChange (e) {
-		console.log(e.target.value)
+		// console.log(e.target.value)
 		this.setState({
 			[e.target.name]: e.target.value
 		});
@@ -54,7 +54,6 @@ class EditTaskForm extends Component {
 		}
 
 		//Use PUT and UPDATE task
-		console.log(newTask);
 	}
 
 	render () {

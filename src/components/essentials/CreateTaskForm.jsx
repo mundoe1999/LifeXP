@@ -32,7 +32,7 @@ class CreateTaskForm extends Component {
 	}
 
 	handleInputChange (e) {
-		console.log(e.target.value)
+		// console.log(e.target.value)
 		this.setState({
 			[e.target.name]: e.target.value
 		});
@@ -53,7 +53,6 @@ class CreateTaskForm extends Component {
 		}
 
 		//Use POST and STORE task
-		console.log(newTask);
 	}
 
 	render () {

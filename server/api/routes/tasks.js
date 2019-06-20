@@ -13,6 +13,8 @@ Task Table
   values: ['EASY','MEDIUM','HARD']
 "boardId": Integer
 "userId": Integer, Optional
+"color": String 
+  default: RED
 
 */
 

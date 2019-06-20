@@ -5,6 +5,8 @@ import './Style.css';
 import LoginComponent from './pages/Login';
 import addBoardComponent from './pages/AddBoard';
 import { Provider } from 'react-redux';
+import LandingPage from './pages/LandingPage';
+
 
 //Importing pages
 import Dash from './pages/Dashboard';
@@ -23,8 +25,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <Switch>
-            <Route exact path='/' render={(props) => <DashboardComponent {...props} />}
-            />
+          <Route exact path='/' render={LandingPageComponent}/>
             <Route path='/user/:userId' component={DashboardComponent} />
             <Route path='/createtask/:boardId' component={createTask} />
             <Route path='/board/:boardId' component={ProjectComponent} />

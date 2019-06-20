@@ -1,7 +1,7 @@
 const path = require("path);")
 const express = require('express');
 const bodyParser = require('body-parser');
-const {db} = require('./database');
+//const {db} = require('./database');
 const app = express();
 const PORT = process.env.PORT || 8080;
 
@@ -13,7 +13,8 @@ let locationOfPublicFolder = path.join(__dirname, "src", "build");
 app.use(express.static(locationOfPublicFolder));
 
 // Listener at port 8080
-db.sync()
-  .then(() => {
-    app.listen(PORT,() => console.log('Connected at ${PORT}'));
-  });
+//db.sync()
+//  .then(() => { 
+app.listen(PORT,() => {
+  console.log('Connected at ${PORT}');
+});

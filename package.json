@@ -20,7 +20,8 @@
   },
   "scripts": {
     "test": "react-scripts test",
-    "start": "node server/app.js",
+    "start-server": "node server/app.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "deploy": "bash deploy",
     "eject": "react-scripts eject"

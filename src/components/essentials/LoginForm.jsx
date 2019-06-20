@@ -29,7 +29,11 @@ class LoginForm extends Component {
 
 	submitData (e) {
 		e.preventDefault();
-		console.log("*Added!");
+
+		//Redux call to login
+
+		//If successful, should return a user
+		//otherwise, display error message?
 	}
 
 	render () {

@@ -1,41 +1,32 @@
 import React, { Component } from 'react';
 import { addNewUserThunk, fetchAllUsersThunk } from '../../actions/userActions'
-//Eventually
 import { connect } from 'react-redux';
-import { Redirect, withRouter } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom';
 
 
 class SignupForm extends Component {
-
     constructor(props) {
-        super(props);
-
-        this.state = {
-            userName: "",
-            password: "",
-            userId: "",
-            displayErrorMessage: false
-        }
+      super(props);
+      this.state = {
+        userId: -1
+      }
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.submitData = this.submitData.bind(this);
     }
 
     handleInputChange(e) {
-        console.log(e.target.value)
-        this.setState({
-            [e.target.name]: e.target.value
-        });
+      this.setState({
+        [e.target.name]: e.target.value
+      });
     }
 
     componentWillMount() {
-        console.log('fetching users: ');
-        this.props.fetchUsers();
+      this.props.fetchUsers();
     }
 
     async submitData(e) {
         e.preventDefault();
-
         const user = {
             fname: this.state.fname,
             lname: this.state.lname,
@@ -47,29 +38,24 @@ class SignupForm extends Component {
             redirect: false
         };
 
-        await this.props.newUser(user);
-
-        console.log("trying againL", this.props.users.length)
-        //HACKY AF IDC LOL
+        let newUser = await this.props.newUser(user);
+        let id = newUser["id"];
         await this.setState({
-            userId: this.props.users.length + 1,
+            userId: id,
             redirect: true
         })
-        console.log("UserId:", this.state.userId)
-        console.log("*Added!", user.id);
     }
 
     render() {
-        if (this.state.redirect) {
-            console.log("whynoredirect?", this.state.userId)
-            let id = this.state.userId
-            return (
-                <Redirect to ={{
-                    pathname: `/user/${this.state.userId}`,
-                    state: {id: id}
-                }} />
-            )
-        }
+      if (this.state.redirect) {
+        let id = this.state.userId;
+        return (
+          <Redirect to ={{
+              pathname: `/user/${this.state.userId}`,
+              state: {id: id}
+          }} />
+        )
+      }
         else {
             return (
                 <div id="loginForm">

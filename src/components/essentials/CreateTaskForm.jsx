@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 
 //Eventually
-// import { connect } from 'react-redux';
-// import axios from 'axios';
+import { connect } from 'react-redux';
+import {addNewTaskThunk} from '../../actions/taskActions';
+import axios from 'axios';
+import {Redirect, withRouter} from 'react-router-dom';
 
 // NOTE:
 // BoardId should be stored in our initial state
@@ -23,8 +25,6 @@ class CreateTaskForm extends Component {
 			color: 'RED',
 			boardId: 1,
 			userId: null,
-
-			displayErrorMessage: false
 		}
 
 		this.handleInputChange = this.handleInputChange.bind(this);
@@ -32,7 +32,6 @@ class CreateTaskForm extends Component {
 	}
 
 	handleInputChange (e) {
-		// console.log(e.target.value)
 		this.setState({
 			[e.target.name]: e.target.value
 		});
@@ -53,6 +52,8 @@ class CreateTaskForm extends Component {
 		}
 
 		//Use POST and STORE task
+		let newTask = this.props.addTask(newTask);
+		console.log(newTask);
 	}
 
 	render () {
@@ -103,5 +104,15 @@ class CreateTaskForm extends Component {
 
 	}
 
-} 
-export default CreateTaskForm;
+}
+const mapStateToProps = state => ({
+	boards: state.boards.items,
+	users: state.users.items
+});
+
+const mapDispatchToProps = (dispatch) =>{
+	return{
+		addTask: (taskToAdd) => dispatch(addNewTaskThunk(taskToAdd)) 
+	}
+}
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateTaskForm));

@@ -23,14 +23,13 @@ class NewBoardForm extends Component {
 
   async onSubmit(e) {
     e.preventDefault();
-    console.log(this.state.redirect)
     const board = {
       name: this.state.name,
       desc: this.state.desc,
       image: this.state.image
     };
-    //need to await or else the database isn't updated quickly enough
-    await this.props.newBoard(board);
+    let newBoard = await this.props.newBoard(board);
+    let id = newBoard["id"];
     //need to await here otherwise redirect will not occur
     await this.setState({ redirect: true })
 

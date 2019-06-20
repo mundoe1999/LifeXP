@@ -9,10 +9,7 @@ import { Provider } from 'react-redux';
 //Importing pages
 import Dash from './pages/Dashboard';
 import Project from './pages/Project';
-<<<<<<< HEAD
-=======
 import SignupComponent from './pages/Signup';
->>>>>>> cd65be80d1165cda354c94c1cc18650383c23fd1
 import store from './store';
 
 

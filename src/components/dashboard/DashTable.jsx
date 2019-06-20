@@ -25,6 +25,7 @@ class DashTable extends React.Component{
 					<th>Clean the Floors</th>
 					<th>Hard</th>
 					<th>Not Started</th>
+					<th><button id="ModalButton">Edit</button></th>
 				</tr>
 			</tbody>
 		</table>

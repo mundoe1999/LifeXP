@@ -14,7 +14,7 @@ app.use(express.static(locationOfPublicFolder));
 
 // Listener at port 8080
 //db.sync()
-//  .then(() => {
+//  .then(() => { 
 app.listen(PORT,() => {
   console.log('Connected at ${PORT}');
 });

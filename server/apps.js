@@ -1,5 +1,4 @@
 const express = require('express');
-<<<<<<< HEAD
 const path = require('path')
 const morgan = require('morgan')
 const session = require('express-session')
@@ -7,7 +6,7 @@ const passport = require('passport')
 const {db} = require('./database')
 const bodyParser = require('body-parser')
 const app = express()
-const PORT = 8080
+const PORT = 5000
 
 // Logging middleware
 app.use(morgan('dev'))
@@ -58,20 +57,11 @@ app.use(express.static(path.join(__dirname, '..', 'public')))
 
 // authentication router
 app.use('/auth', require('./auth'))
-=======
-const bodyParser = require('body-parser');
-const {db} = require('./database');
-const app = express();
-const PORT=5000;
-
-
->>>>>>> cd65be80d1165cda354c94c1cc18650383c23fd1
 
 // Setting up routing
 app.use(bodyParser.json());
 app.use('/api', require('./api'));
 
-<<<<<<< HEAD
 // For all GET requests that aren't to an API route,
 // we will send the index.html!
 app.get('/*', (req, res, next) => {
@@ -91,13 +81,10 @@ app.use((err, req, res, next) => {
   res.send(err.message || 'Internal server error')
 })
 
-
-
-=======
-app.listen(PORT, () => {
-  console.log(`Server runnin on ${PORT}`);
+app.listen(PORT, () =>{
+  console.log("Running")
 })
->>>>>>> cd65be80d1165cda354c94c1cc18650383c23fd1
+
 // Listener at port 8080
 db.sync()
   .then(() => {

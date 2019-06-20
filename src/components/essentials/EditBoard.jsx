@@ -39,7 +39,6 @@ class EditBoardForm extends Component {
 		}
 
 		//MAKE PUT REQUEST to EDIT BOARD
-		console.log(newBoard);
 	}
 
 	render () {

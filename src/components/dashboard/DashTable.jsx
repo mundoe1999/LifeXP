@@ -1,36 +1,43 @@
-import React from 'react';
-import Modal from '../essentials/Modal';
-//import { connect } from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-class DashTable extends React.Component{
-	constructor(props){
-		super(props);
+class DashTable extends Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			data: ' '
+		};
 	}
 
-	render(){
-	return(
-	<div>
-		<table>
-			<thead>
-				<tr>
-					<th>board</th>
-					<th>to-do</th>
-					<th>Difficulty</th>
-					<th>status</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<th>Robinson Family</th>
-					<th>Clean the Floors</th>
-					<th>Hard</th>
-					<th>Not Started</th>
-				</tr>
-			</tbody>
-		</table>
-		<Modal/>
-	</div>
-	)}
+	render() {
+		const tasks = this.props.tasks.map((currentTask) =>
+			<tr>
+			<th>{currentTask.name}</th>
+			<th>{currentTask.desc}</th>
+			<th></th>
+			<th> {currentTask.status}</th>
+			</tr>
+		)
+		return (
+			<div>
+				<table>
+					<thead>
+						<tr>
+							<th>board</th>
+							<th>to-do</th>
+							<th>level</th>
+							<th>status</th>
+						</tr>
+					</thead>
+					<tbody>
+					{tasks}
+					</tbody>
+
+				</table>
+			</div >
+		)
+	}
 }
 
 export default DashTable;

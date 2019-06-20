@@ -1,19 +1,20 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {withRouter} from 'react-router';
 
-// Text in h1 and h4 will be replaced when backend is ready
-//STUB
+
+
 const BoardCard = props => (
   <div className="BoardCard">
-    <Link to='board/numberHERE'>
+    `<Link to ={`/board/${props.board.id}`}>
       <span className='Card RED'>
-      <h1>{props.board.id}</h1>
-    	<h4>{props.board.body}</h4>
+      <h1>{props.board.name}</h1>
+    	<h4>{props.board.desc}</h4>
       </span>
-    </Link>
+    </Link>`
 
   </div>
 
 );
 
-export default BoardCard;
+export default withRouter(BoardCard);

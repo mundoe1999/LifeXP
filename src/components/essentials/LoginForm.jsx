@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 //Eventually
-// import { connect } from 'react-redux';
+ import { connect } from 'react-redux';
+ import { Redirect, withRouter } from 'react-router-dom';
+ import {login}  from '../../actions/userActions';
 // import axios from 'axios';
 
 
@@ -13,7 +15,8 @@ class LoginForm extends Component {
 		this.state = {
 			userName: "",
 			password: "",
-			displayErrorMessage: false
+			loggedIn: false,
+			id: -1
 		}
 
 		this.handleInputChange = this.handleInputChange.bind(this);
@@ -27,12 +30,31 @@ class LoginForm extends Component {
 		});
 	}
 
-	submitData (e) {
+	async submitData (e) {
 		e.preventDefault();
-		console.log("*Added!");
+
+		let credentials = {
+			username: this.state.userName,
+			password: this.state.password
+		}
+		//Redux call to login
+		console.log(credentials);
+		let connection = await this.props.loggin(credentials);
+
+		//If successful, should return a user
+		//otherwise, display error message?
+		if(typeof connection !== "undefined"){
+			console.log(connection);
+			console.log(connection["user"]["id"]);
+			this.setState({loggedIn:true,id:connection["user"]["id"]});
+			
+		} else{
+			alert("incorrect password or username");
+		}
 	}
 
 	render () {
+		if(this.state.loggedIn){return (<Redirect to ={`/user/`+this.state.id} />)}
 		return (
     <div id = "loginForm">
 
@@ -49,10 +71,13 @@ class LoginForm extends Component {
     </form>
     </div>
 
-
 		)
-
 	}
-
 } 
-export default LoginForm;
+
+function mapDispatch(dispatch) {
+	return {
+		loggin: (id) => dispatch(login(id))
+	}
+}
+export default withRouter(connect(null,mapDispatch)(LoginForm));

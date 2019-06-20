@@ -1,5 +1,4 @@
-//import types for the reducer
-import { FETCH_BOARDS, ADD_NEW_BOARD, FETCH_BOARD, REMOVE_BOARD } from '../actions/types';
+import { FETCH_TASKS, FETCH_TASK, ADD_NEW_TASK, REMOVE_TASK } from '../actions/types';
 const initialState = {
   items: [],
   item: {}
@@ -11,22 +10,22 @@ data processing. Returns a copy of a new state to
 */
 export default function (state = initialState, action) {
   switch (action.type) {
-    case FETCH_BOARDS:
+    case FETCH_TASKS:
       return {
         ...state,
         items: action.payload
       };
-    case ADD_NEW_BOARD:
+    case ADD_NEW_TASK:
       return {
         ...state,
         item: action.payload
       };
-    case FETCH_BOARD:
+    case FETCH_TASK:
       return {
         ...state,
         item: action.payload
       };
-    case REMOVE_BOARD:
+    case REMOVE_TASK:
       return {
         ...state,
         item: action.payload

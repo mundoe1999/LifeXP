@@ -33,7 +33,7 @@ router.get('/:boardId', async(req,res,next) =>{
         {
           model: User,
           as: 'users',
-          attributes: ['fname','lname','username','level'],
+          attributes: ['id','fname','lname','username','level'],
           through: {attributes:[]}
         }],
       });

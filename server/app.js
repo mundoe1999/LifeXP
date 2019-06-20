@@ -58,6 +58,10 @@ app.use(express.static(path.join(__dirname, '..', 'public')))
 // authentication router
 app.use('/auth', require('./auth'))
 
+// Setting up routing
+app.use(bodyParser.json());
+app.use('/api', require('./api'));
+
 // For all GET requests that aren't to an API route,
 // we will send the index.html!
 app.get('/*', (req, res, next) => {
@@ -77,9 +81,7 @@ app.use((err, req, res, next) => {
   res.send(err.message || 'Internal server error')
 })
 
-// Setting up routing
-app.use(bodyParser.json());
-app.use('/api', require('./api'));
+
 
 // Listener at port 8080
 db.sync()

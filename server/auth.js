@@ -17,7 +17,7 @@ router.put('/login', async (req, res, next) => {
       }
     })
     if (user) {
-      req.login(user, (err) => err ? next(err) : res.json(user))
+      req.login(user, (err) => err ? next(err) : res.json(user["id"]))
     } else {
       const err = new Error('Incorrect email or password!')
       err.status = 401

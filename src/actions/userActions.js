@@ -1,5 +1,5 @@
 //Import the list of actions from type for user actions
-import { FETCH_USERS, ADD_NEW_USER, REMOVE_USER, FETCH_USER, ADD_USER_TO_BOARD } from './types';
+import { FETCH_USERS, ADD_NEW_USER, REMOVE_USER, FETCH_USER, ADD_USER_TO_BOARD, GET_USER } from './types';
 
 
 import axios from 'axios';
@@ -97,3 +97,30 @@ export const addUserToBoardThunk = (user) => (dispatch) => {
     .then(data => dispatch(addUserToBoard()))
     .catch(err => console.log(err));
 }
+
+/*Waste */
+
+const gotMe = (user) => ({
+  type: GET_USER,
+  user
+})
+
+export const getMe = () => dispatch => {
+  return axios.get('/auth/me')
+    .then(res => res.data)
+    .then(user => dispatch(gotMe(user)))
+    .catch(console.error.bind(console))
+
+}
+
+
+
+export const login = (formData) => dispatch => {
+  return axios.put('/auth/login', formData)
+    .then(res => res.data)
+    .then(user => dispatch(gotMe(user)))
+    .catch(console.error.bind(console))
+
+}
+
+

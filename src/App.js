@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 import Dash from './pages/Dashboard';
 import Project from './pages/Project';
 import SignupComponent from './pages/Signup';
+import createTask from './components/essentials/CreateTaskForm';
 import store from './store';
 
 
@@ -25,10 +26,12 @@ class App extends Component {
             <Route exact path='/' render={(props) => <DashboardComponent {...props} />}
             />
             <Route path='/user/:userId' component={DashboardComponent} />
+            <Route path='/createtask/:boardId' component={createTask} />
             <Route path='/board/:boardId' component={ProjectComponent} />
             <Route exact path='/Login' component={LoginComponent} />
             <Route exact path='/CreateBoard' component={addBoardComponent} />
             <Route exact path='/Signup' component={SignupComponent} />
+            
           </Switch>
         </Router>
       </Provider>

@@ -1,19 +1,16 @@
 //Importing Library Components
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 
 //Importing Components
 import NavBar from '../components/essentials/NavBar';
 import TitleDesc from '../components/dashboard/TitleDesc';
 import BoardList from '../components/dashboard/BoardList';
 import DashTable from '../components/dashboard/DashTable';
-import { Redirect, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 
 //Importing Actions
-import { fetchAllBoardsThunk } from '../actions/boardActions';
-import { fetchAllTasksThunk } from '../actions/taskActions';
 import { fetchUserThunk } from '../actions/userActions';
 
 
@@ -22,17 +19,7 @@ class Dash extends Component {
 		super(props);
 
 		this.state = {
-			data: "",
-			user: [{
-				boards: [],
-				id: "",
-				fname: "",
-				lname: "",
-				username: "",
-				password: "",
-				level: "",
-				tasks: []
-			}]
+			renderStuff: false
 		}
 //for edit later
 		// this.handleInputChange = this.handleInputChange.bind(this);
@@ -53,11 +40,8 @@ class Dash extends Component {
 		console.log("trying:", match.params.userId)
 		await this.props.fetchUser(match.params.userId)
 		await this.setState({
-			user: this.props.user
+			renderStuff: true
 		})
-
-
-		this.props.fetchBoards();
 	}
 
 	//componentDidMount and callBackendAPI connect the backend to the
@@ -65,7 +49,6 @@ class Dash extends Component {
 	//connects the backend with the frontend
 	callBackendAPI = async () => {
 		const response = await fetch('/');
-		console.log("response: ", response)
 		const body = await response.json();
 		if (response.status !== 200) {
 			throw Error(body.message)
@@ -73,27 +56,29 @@ class Dash extends Component {
 		return body;
 	};
 
+	//					
 	render() {
-		if (!this.props.user && !this.props.boards) return null
+		console.log(this.state.user);
+		if (this.props.user === undefined) return (
+			<div>
+				I don't exist!
+			</div>
+		)
 		else {
-			console.log("----user: ", this.state.user);
-			console.log("at 0", this.state.user[0].fname)
-
 			return (
 				<div>
 					<div className="TopContainer">
-						<NavBar name={this.state.user[0].fname}  />
-						{/* <h2>{this.state.user[0].fname}, {this.state.user[0].lname}</h2> */}
+						<NavBar name={this.props.user["fname"]}  />
 
 						<div className="DashboardPad">
 							<TitleDesc />
 
-							<BoardList boards={this.props.boards} />
+							<BoardList boards={this.props.user["boards"]} />
 						</div>
 					</div>
 					<div className="DashboardPad">
 						<h1>my tasks</h1>
-						<DashTable tasks={this.state.user[0].tasks} />
+						<DashTable tasks={this.props.user["tasks"]} />
 					</div>
 				</div>
 			)
@@ -102,7 +87,7 @@ class Dash extends Component {
 }
 
 const mapStateToProps = state => ({
-	user: state.users.item,
+	user: state.users.item[0],
 	boards: state.boards.items,
 	tasks: state.tasks.items,
 	newBoard: state.boards.item
@@ -110,8 +95,6 @@ const mapStateToProps = state => ({
 
 function mapDispatch(dispatch) {
 	return {
-		fetchBoards: () => dispatch(fetchAllBoardsThunk()),
-		fetchTasks: () => dispatch(fetchAllTasksThunk()),
 		fetchUser: (userId) => dispatch(fetchUserThunk(userId))
 	}
 }

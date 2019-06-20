@@ -5,9 +5,9 @@ import TitleDesc from '../components/dashboard/TitleDesc';
 import BoardCard from '../components/dashboard/BoardCard';
 import ProjTable from '../components/project/ProjTable';
 import Leaderboard from '../components/project/Leaderboard';
-import { fetchAllBoardsThunk } from '../actions/boardActions';
+import { fetchBoardThunk } from '../actions/boardActions';
 import { fetchAllTasksThunk } from '../actions/taskActions';
-import { Link, Route, NavLink, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 /*
 
 */
@@ -21,19 +21,10 @@ class Project extends Component {
 		};
 	}
 	componentWillMount() {
-		this.props.fetchBoards();
+		this.props.fetchBoard(this.props.match.params.boardId);
 		this.props.fetchTasks();
 	}
 
-	// componentDidMount () {
-	//     const { handle } = match.params.boardId
-	// 	console.log("@@@@@@@@@@@@@@@@@@")
-	// 	//SEARCHME heroku change
-	//     fetch(`http://localhost:3000/board/${handle}`)
-	//       .then((board) => {
-	//         this.setState(() => ({ board }))
-	//       })
-	//   }
 
 	render() {
 		//console.log("****ID", this.props.match.params.boardId);
@@ -43,15 +34,14 @@ class Project extends Component {
 					<link rel="stylesheet" type="text/css" href="../Style.css" />
 				</head>
 				<div className="TopContainer">
-					<NavBar name="Rupert" />
+					<NavBar name={this.props.user["fname"]} />
 					<div className="ProjectPad">
-						<h2>TEST: {this.props.name}</h2>
 						<div className="LeftElement">
 							<TitleDesc />
-							<BoardCard board={{ "id": "Robinson Family", "body": "Test" }} />
+							<BoardCard board={{ "name": this.props.board["name"], "desc": this.props.board["desc"] }} />
 						</div>
 						<div className="RightElement">
-							<Leaderboard />
+							<Leaderboard users={this.props.board["users"]}/>
 						</div>
 					</div>
 					<br />
@@ -67,7 +57,7 @@ class Project extends Component {
 
 				<div className="DashboardPad">
 					<h1>group tasks</h1>
-					<ProjTable />
+					<ProjTable tasks = {this.props.board["tasks"]}/>
 				</div>
 			</div>
 		)
@@ -76,18 +66,16 @@ class Project extends Component {
 
 const mapStateToProps = state => (
 	{
-		boards: state.boards.items,
-		tasks: state.tasks.items,
-		newBoard: state.boards.item,
-		currentBoard: state.boards.item
+		board: state.boards.item,
+		user: state.users.item[0]
 	});
 
 function mapDispatch(dispatch) {
 	return {
-		fetchBoards: () => dispatch(fetchAllBoardsThunk()),
+		fetchBoard: (id) => dispatch(fetchBoardThunk(id)),
 		fetchTasks: () => dispatch(fetchAllTasksThunk())
 	}
 }
 
 
-export default connect(mapStateToProps, mapDispatch)(Project);
+export default withRouter(connect(mapStateToProps, mapDispatch)(Project));

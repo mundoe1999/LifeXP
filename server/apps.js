@@ -5,6 +5,7 @@ const session = require('express-session')
 const passport = require('passport')
 const {db} = require('./database')
 const bodyParser = require('body-parser')
+const {User} = require('./database/')
 const app = express()
 const PORT = 5000
 
@@ -38,17 +39,17 @@ app.use(passport.session())
 
 // after we find or create a user, we 'serialize' our user on the session
 passport.serializeUser((user, done) => {
-  done(null, user.id)
+  return done(null, user.id)
 })
 
 // If we've serialized the user on our session with an id, we look it up here
 // and attach it as 'req.user'.
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await User.findById(id)
-    done(null, user)
+    const user = await User.findByPk(id)
+    return done(null, user)
   } catch (err) {
-    done(err)
+    return done(err)
   }
 })
 

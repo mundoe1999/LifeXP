@@ -12,14 +12,14 @@ router.put('/login', async (req, res, next) => {
   try {
     const user = await User.findOne({
       where: {
-        email: req.body.email,
+        username: req.body.username,
         password: req.body.password
       }
     })
     if (user) {
-      req.login(user, (err) => err ? next(err) : res.json(user["id"]))
+      req.login(user, (err) => err ? next(err) : res.json(user))
     } else {
-      const err = new Error('Incorrect email or password!')
+      const err = new Error('Incorrect username or password!')
       err.status = 401
       throw err
     }

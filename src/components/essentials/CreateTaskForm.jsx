@@ -23,8 +23,7 @@ class CreateTaskForm extends Component {
 			status: "NOTSTARTED",
 			difficulty: "EASY",
 			color: 'RED',
-			boardId: 1,
-			userId: null,
+			userId: null
 		}
 
 		this.handleInputChange = this.handleInputChange.bind(this);
@@ -47,13 +46,24 @@ class CreateTaskForm extends Component {
 			status: this.state.status,
 			difficulty: this.state.difficulty,
 			color: this.state.color,
-			boardId: this.state.boardId,
+			boardId: this.props.match.params.boardId,
 			userId: this.state.userId
 		}
 
 		//Use POST and STORE task
-		let newTask = this.props.addTask(newTask);
-		console.log(newTask);
+		let aNewTask = this.props.addTask(newTask);
+		console.log(aNewTask);
+
+		//Reset Component
+		this.setState({
+			name: "",
+			desc: "",
+			status: "NOTSTARTED",
+			difficulty: "EASY",
+			color: 'RED',
+			boardId: 1,
+			userId: null
+		});
 	}
 
 	render () {

@@ -1,5 +1,5 @@
 //Import the list of actions from type for board actions
-import { FETCH_BOARDS, ADD_NEW_BOARD, REMOVE_BOARD, FETCH_BOARD } from './types';
+import { FETCH_BOARDS, ADD_NEW_BOARD, REMOVE_BOARD, FETCH_BOARD, ADD_USER_TO_BOARD } from './types';
 import axios from 'axios';
 
 
@@ -36,6 +36,12 @@ const removeBoard = (boardId) => {
   }
 }
 
+const addUserToBoard = () => {
+  return {
+    type: ADD_USER_TO_BOARD,
+    payload: null
+  }
+}
 
 
 // ************************************ THUNK CREATORS ************************************
@@ -63,7 +69,17 @@ export const addNewBoardThunk = (board) => (dispatch) => {
     // remember, axios can GET, POST, PUT, DELETE
     .post("/api/boards", board)
     .then(response => response.data)
-    .then(data => dispatch(addNewBoard()))
+    .then(data => dispatch(addNewBoard(data)))
+    .catch(err => console.log(err));
+}
+
+export const addUserToBoardThunk = (boardId,userId) => (dispatch) => {
+  return axios
+    // axios.post because we are ADDING a new board
+    // remember, axios can GET, POST, PUT, DELETE
+    .put(`/api/users/${userId}/add/${boardId}`)
+    .then(response => response.data)
+    .then(data => dispatch(addUserToBoard()))
     .catch(err => console.log(err));
 }
 

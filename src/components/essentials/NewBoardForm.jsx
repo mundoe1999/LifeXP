@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addNewBoardThunk } from '../../actions/boardActions';
+import { addNewBoardThunk, addUserToBoardThunk } from '../../actions/boardActions';
 import { Redirect, withRouter } from 'react-router-dom'
 
 class NewBoardForm extends Component {
@@ -10,7 +10,8 @@ class NewBoardForm extends Component {
     this.state = {
       name: '',
       desc: '',
-      redirect: false
+      redirect: false,
+      boardId: -1
     };
 
     this.onChange = this.onChange.bind(this);
@@ -28,17 +29,21 @@ class NewBoardForm extends Component {
       desc: this.state.desc,
       image: this.state.image
     };
+    console.log(board);
     let newBoard = await this.props.newBoard(board);
-    let id = newBoard["id"];
-    //need to await here otherwise redirect will not occur
-    await this.setState({ redirect: true })
+    console.log("viard",newBoard);
+    let id = newBoard["payload"]["id"];
+    await this.setState({ redirect: true,boardId:id });
+    await this.props.addUserToBoard(id, this.props.user["id"]);
+
+
 
   }
 
   render() {
     if (this.state.redirect) {
       return (
-        <Redirect to='/' />
+        <Redirect to={`/user/${this.props.user["id"]}`} />
       )
     }
     else {
@@ -85,12 +90,19 @@ class NewBoardForm extends Component {
     }
   }
 }
+const mapProps = state =>(
+{
+  user: state.users.item[0]
+}
+)
+
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    newBoard: (boardToPost) => dispatch(addNewBoardThunk(boardToPost))
+    newBoard: (boardToPost) => dispatch(addNewBoardThunk(boardToPost)),
+    addUserToBoard: (boardId,userId) => dispatch(addUserToBoardThunk(boardId,userId))
   }
 }
 
 //export default NewBoardForm;
-export default withRouter(connect(null, mapDispatchToProps)(NewBoardForm));
+export default withRouter(connect(mapProps, mapDispatchToProps)(NewBoardForm));

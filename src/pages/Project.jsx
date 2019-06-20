@@ -28,13 +28,14 @@ class Project extends Component {
 
 	render() {
 		//console.log("****ID", this.props.match.params.boardId);
+		console.log(this.props.user);
 		return (
 			<div>
 				<head>
 					<link rel="stylesheet" type="text/css" href="../Style.css" />
 				</head>
 				<div className="TopContainer">
-					<NavBar name={this.props.user["fname"]} />
+					<NavBar name={this.props.user["fname"]} daLink={this.props.user["id"]} />
 					<div className="ProjectPad">
 						<div className="LeftElement">
 							<TitleDesc />

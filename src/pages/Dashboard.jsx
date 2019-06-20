@@ -68,7 +68,7 @@ class Dash extends Component {
 			return (
 				<div>
 					<div className="TopContainer">
-						<NavBar name={this.props.user["fname"]}  />
+						<NavBar name={this.props.user["fname"]} daLink={this.props.user["id"]}  />
 
 						<div className="DashboardPad">
 							<TitleDesc />

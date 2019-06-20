@@ -47,7 +47,7 @@ router.get('/:userId', async(req,res,next) =>{
 
     const user = await User.findAll({
       where: {id: req.params.userId},
-      attributes: ['fname', 'lname','image','level'],
+      attributes: ['id', 'fname', 'lname','image','level'],
 
       include: [{
         model: Board,

@@ -11,7 +11,7 @@ class NavBar extends React.Component{
       <Link to='/'><div className="logo"><b>exp</b></div></Link>
       <ul>
         <li><Link to='/Logout'>Logout</Link></li>
-        <li><Link to='/'>Dash</Link></li>
+        <li><Link to={`/user/${this.props.daLink}`}>Dash</Link></li>
       </ul>
   </div>
 </nav>

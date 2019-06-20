@@ -59,7 +59,7 @@ passport.deserializeUser(async (id, done) => {
 })
 
 // Static middleware
-app.use(express.static(path.join(__dirname, '..', 'public')))
+app.use(express.static(path.join(__dirname, '../', 'public')))
 
 // authentication router
 app.use('/auth', require('./auth'))
@@ -71,7 +71,7 @@ app.use('/api', require('./api'));
 // For all GET requests that aren't to an API route,
 // we will send the index.html!
 app.get('/*', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '..', 'index.html'))
+  res.sendFile(path.join(__dirname, '../', 'index.html'))
 })
 
 // Handle 404s

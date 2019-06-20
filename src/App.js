@@ -21,6 +21,7 @@ class App extends Component {
   render() {
     const DashboardComponent = () => (<Dash />);
     const ProjectComponent = () => (<Project />);
+    const LandingPageComponent = () => (<LandingPage/>)
     return (
       <Provider store={store}>
         <Router>

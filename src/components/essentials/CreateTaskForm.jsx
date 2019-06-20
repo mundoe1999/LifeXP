@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 //Eventually
 import { connect } from 'react-redux';
 import {addNewTaskThunk} from '../../actions/taskActions';
-import axios from 'axios';
-import {Redirect, withRouter} from 'react-router-dom';
+import { withRouter} from 'react-router-dom';
 
 // NOTE:
 // BoardId should be stored in our initial state

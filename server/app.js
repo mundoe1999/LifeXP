@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 8080;
 app.use(bodyParser.json());
 app.use('/api', require('./api'));
 
-let locationOfPublicFolder = path.join(__dirname, "client", "build");
+let locationOfPublicFolder = path.join(__dirname, "src", "build");
 app.use(express.static(locationOfPublicFolder));
 
 // Listener at port 8080

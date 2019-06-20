@@ -1,13 +1,18 @@
 const express = require('express');
-const path = require('path')
-const morgan = require('morgan')
-const session = require('express-session')
-const passport = require('passport')
-const {db} = require('./database')
-const bodyParser = require('body-parser')
-const {User} = require('./database/')
-const app = express()
-const PORT = 5000
+const path = require('path');
+const api  = require('./api');
+const boards = require('./api/routes/boards');
+const users = require('./api/routes/users');
+const tasks = require('./api/routes/tasks');
+const morgan = require('morgan');
+const session = require('express-session');
+const passport = require('passport');
+const {db} = require('./database');
+const bodyParser = require('body-parser');
+const {User} = require('./database');
+
+const app = express();
+app.set('port', process.env.PORT || 3000);
 
 // Logging middleware
 app.use(morgan('dev'))
@@ -82,12 +87,17 @@ app.use((err, req, res, next) => {
   res.send(err.message || 'Internal server error')
 })
 
-app.listen(PORT, () =>{
-  console.log("Running")
-})
+if ('development' === app.get('env')) {
+  app.use(express.errorHandler());
+}
 
-// Listener at port 8080
-db.sync()
-  .then(() => {
-    app.listen(8080,() => console.log('Connected at 8080')); 
+app.get('/', api.routes.index);
+app.get('/users', users.list);
+app.get('/boards', boards.list);
+app.get('/tasks', tasks.list);
+
+db.sequelize.sync().then(function() {
+  http.createServer(app).listen(app.get('port'), function(){
+    console.log('Express server listening on port ' + app.get('port'));
   });
+});

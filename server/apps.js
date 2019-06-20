@@ -92,5 +92,5 @@ app.listen(PORT, () =>{
 // Listener at port 8080
 //db.sync()
 //  .then(() => {
-    app.listen(8080,() => {console.log('Connected at 8080'); 
+    app.listen(PORT,() => {console.log('Connected at ${PORT}'); 
   });

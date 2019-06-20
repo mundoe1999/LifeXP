@@ -85,12 +85,12 @@ app.use((err, req, res, next) => {
   res.send(err.message || 'Internal server error')
 })
 
-app.listen(PORT, () =>{
-  console.log("Running")
-})
+//app.listen(PORT, () =>{
+//  console.log("Running")
+//})
 
 // Listener at port
-//db.sync()
-//  .then(() => {
-    app.listen(PORT,() => {console.log('Connected at ${PORT}'); 
+db.sync()
+  .then(() => {
+    app.listen(PORT,() => console.log('Connected at ${PORT}')); 
   });

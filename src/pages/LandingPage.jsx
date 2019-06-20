@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import NavBar from '../components/essentials/NavBar';
+import {Link} from 'react-router-dom';
 
 class LandingPage extends Component{
 	render(){
@@ -20,6 +21,7 @@ class LandingPage extends Component{
 							</div>
 						</div>
 					</div>
+					<h2 className="Centered"><Link to='/Login'>Log into an existing account</Link></h2>
 				</div>
 			)
 	}

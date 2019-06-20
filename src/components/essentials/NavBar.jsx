@@ -12,7 +12,6 @@ if(this.props.name != undefined){
       <ul>
 	      <li><Link to='/Logout'>Logout</Link></li>
         <li><Link to='/'>Dash</Link></li>
-        <li><Link to='/Login'> Login</Link></li>
       </ul>
     </div>
   </nav>
@@ -26,7 +25,6 @@ else{
       <ul>
         <li><Link to='/Logout'>Logout</Link></li>
         <li><Link to='/'>Dash</Link></li>
-        <li><Link to='/Login'> Login</Link></li>
       </ul>
     </div>
   </nav>

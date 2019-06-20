@@ -11,14 +11,14 @@ Interacts with the reducer, as the type matches a type in the reducer
 */
 
 const fetchUsers = (user) => {
-  return{
+  return {
     type: FETCH_USERS,
     payload: user
   }
 }
 
 const fetchUser = (user) => {
-  return{
+  return {
     type: FETCH_USER,
     payload: user
   }
@@ -26,8 +26,8 @@ const fetchUser = (user) => {
 
 const addNewUser = (newUser) => {
   return {
-      type: ADD_NEW_USER,
-      payload: newUser
+    type: ADD_NEW_USER,
+    payload: newUser
   }
 }
 
@@ -39,7 +39,7 @@ const addUserToBoard = (user) => {
 }
 
 const removeUser = (userId) => {
-  return{
+  return {
     type: REMOVE_USER,
     payload: userId
   }
@@ -55,43 +55,45 @@ as an argument with the data recieved from the axios api call
 
 export const fetchAllUsersThunk = () => dispatch => {
   return axios
-  .get('/api/users')
+    .get('/api/users')
     .then(res => res.data)
     .then(data => dispatch(fetchUsers(data)))
     .catch(err => console.log(err));
 };
 
 export const fetchUserThunk = (userId) => dispatch => {
+  console.log("fetchUser called on", userId)
+  console.log(`/api/users/${userId}`)
   return axios
-  .get(`/api/users/${userId}`)
-    .then(res => res.data)
-    .then(data => dispatch(fetchUser(data)))
-    .catch(err => console.log(err));
+    .get(`/api/users/${userId}`)
+    .then(res => {
+      dispatch(fetchUser(res.data))
+    })
 };
 
 
 export const addNewUserThunk = (user) => (dispatch) => {
-  return axios 
-      .post("/api/users", user)
-      .then(res => res.data)
-      // .then(res => console.log("res in thunk: ", res.id))
-      .then(dispatch(addNewUser()))
-      .catch(err => console.log(err));
+  return axios
+    .post("/api/users", user)
+    .then(res => res.data)
+    // .then(res => console.log("res in thunk: ", res.id))
+    .then(dispatch(addNewUser()))
+    .catch(err => console.log(err));
 }
 
 export const deleteUserThunk = (userId) => (dispatch) => {
-  return axios 
-      .delete("/api/users", userId)
-      .then(res => res.data)
-      .then(data => dispatch(removeUser()))
-      .catch(err => console.log(err));
+  return axios
+    .delete("/api/users", userId)
+    .then(res => res.data)
+    .then(data => dispatch(removeUser()))
+    .catch(err => console.log(err));
 }
 
-export const addUserToBoardThunk = (user) => (dispatch) =>{
+export const addUserToBoardThunk = (user) => (dispatch) => {
   return axios
-  .put(`/api/board/`, user)
-  .then(res => res.data)
-  //might not need taht data part, jsut the then
-  .then(data => dispatch(addUserToBoard()))
-  .catch(err => console.log(err));
+    .put(`/api/board/`, user)
+    .then(res => res.data)
+    //might not need taht data part, jsut the then
+    .then(data => dispatch(addUserToBoard()))
+    .catch(err => console.log(err));
 }

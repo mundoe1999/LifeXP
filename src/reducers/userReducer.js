@@ -5,7 +5,7 @@ import { FETCH_USERS, ADD_NEW_USER, FETCH_USER, REMOVE_USER } from '../actions/t
 //initial state for the actions is empty, use this to store payload
 const initialState = {
   items: [],
-  item: {}
+  item: []
 };
 
 

@@ -62,8 +62,12 @@ class SignupForm extends Component {
     render() {
         if (this.state.redirect) {
             console.log("whynoredirect?", this.state.userId)
+            let id = this.state.userId
             return (
-                <Redirect to ={`/${this.state.userId}`} />
+                <Redirect to ={{
+                    pathname: `/user/${this.state.userId}`,
+                    state: {id: id}
+                }} />
             )
         }
         else {
@@ -112,4 +116,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 //export default NewBoardForm;
-export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignupForm));

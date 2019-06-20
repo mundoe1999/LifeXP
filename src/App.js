@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 //Importing pages
 import Dash from './pages/Dashboard';
 import Project from './pages/Project';
+import LandingPage from './pages/LandingPage';
 
 import store from './store';
 
@@ -17,16 +18,17 @@ class App extends Component {
   render() {
     const DashboardComponent = () => (<Dash />);
     const ProjectComponent = () => (<Project />);
+    const LandingPageComponent = () => (<LandingPage/>)
     return( 
       <Provider store={store}>
         <Router>
           <Switch>
-            <Route exact path='/' render={DashboardComponent}/>
+            <Route exact path='/' render={LandingPageComponent}/>
             <Route exact path='/Board' render={ProjectComponent}/>
             <Route exact path='/Login' component={LoginComponent}/>
           </Switch>
         </Router>
-        </Provider>
+      </Provider>
 
     )
   }

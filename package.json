@@ -21,7 +21,9 @@
   "scripts": {
     "test": "react-scripts test",
     "start": "node server/app.js",
-    "deploy": "bash deploy"
+    "build": "react-scripts build",
+    "deploy": "bash deploy",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"

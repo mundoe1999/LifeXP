@@ -1,5 +1,5 @@
 //Import the list of actions from type for user actions
-import { FETCH_USERS, ADD_NEW_USER, REMOVE_USER, FETCH_USER } from './types';
+import { FETCH_USERS, ADD_NEW_USER, REMOVE_USER, FETCH_USER, ADD_USER_TO_BOARD } from './types';
 
 
 import axios from 'axios';
@@ -28,6 +28,13 @@ const addNewUser = (newUser) => {
   return {
       type: ADD_NEW_USER,
       payload: newUser
+  }
+}
+
+const addUserToBoard = (user) => {
+  return {
+    type: ADD_USER_TO_BOARD,
+    payload: user
   }
 }
 
@@ -65,18 +72,26 @@ export const fetchUserThunk = (userId) => dispatch => {
 
 export const addNewUserThunk = (user) => (dispatch) => {
   return axios 
-      // axios.post because we are ADDING a new user
       .post("/api/users", user)
-      .then(response => response.data)
-      .then(data => dispatch(addNewUser()))
+      .then(res => res.data)
+      // .then(res => console.log("res in thunk: ", res.id))
+      .then(dispatch(addNewUser()))
       .catch(err => console.log(err));
 }
 
 export const deleteUserThunk = (userId) => (dispatch) => {
   return axios 
-      // axios.post because we are ADDING a new user
       .delete("/api/users", userId)
-      .then(response => response.data)
+      .then(res => res.data)
       .then(data => dispatch(removeUser()))
       .catch(err => console.log(err));
+}
+
+export const addUserToBoardThunk = (user) => (dispatch) =>{
+  return axios
+  .put(`/api/board/`, user)
+  .then(res => res.data)
+  //might not need taht data part, jsut the then
+  .then(data => dispatch(addUserToBoard()))
+  .catch(err => console.log(err));
 }

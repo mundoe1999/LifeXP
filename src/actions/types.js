@@ -10,7 +10,7 @@ export const FETCH_USER = 'FETCH_USER';
 export const ADD_NEW_USER = 'ADD_NEW_USER';
 export const FETCH_USERS = 'FETCH_USERS';
 export const REMOVE_USER = 'REMOVE_USER';
-
+export const ADD_USER_TO_BOARD = 'ADD_USER_TO_BOARD';
 
 //Tasks:
 export const FETCH_TASKS = 'FETCH_TASKS';

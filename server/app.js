@@ -7,7 +7,7 @@ const {db} = require('./database')
 const bodyParser = require('body-parser')
 const {User} = require('./database/')
 const app = express()
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 
 // Logging middleware
 app.use(morgan('dev'))
@@ -89,7 +89,7 @@ app.listen(PORT, () =>{
   console.log("Running")
 })
 
-// Listener at port 8080
+// Listener at port
 //db.sync()
 //  .then(() => {
     app.listen(PORT,() => {console.log('Connected at ${PORT}'); 

@@ -16,7 +16,7 @@ app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-let locationOfPublicFolder = path.join(__dirname, "src", "build");
+let locationOfPublicFolder = path.join(__dirname, "../src", "build");
 app.use(express.static(locationOfPublicFolder));
 
 // Session middleware

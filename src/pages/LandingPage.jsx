@@ -21,7 +21,7 @@ class LandingPage extends Component{
 							</div>
 						</div>
 					</div>
-					<h2 className="Centered"><Link to='/Login'>Log into an existing account</Link></h2>
+					<h2 className="Centered"><Link to='/Login'>Log in here!</Link></h2>
 				</div>
 			)
 	}

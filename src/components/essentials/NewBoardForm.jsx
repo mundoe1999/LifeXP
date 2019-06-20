@@ -33,8 +33,9 @@ class NewBoardForm extends Component {
     let newBoard = await this.props.newBoard(board);
     console.log("viard",newBoard);
     let id = newBoard["payload"]["id"];
-    await this.setState({ redirect: true,boardId:id });
     await this.props.addUserToBoard(id, this.props.user["id"]);
+    await this.setState({ redirect: true,boardId:id });
+
 
 
 

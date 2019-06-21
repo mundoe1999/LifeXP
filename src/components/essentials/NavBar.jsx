@@ -5,6 +5,7 @@ import {signOutAction} from '../../actions/authentication';
 
 class NavBar extends React.Component{
 	render(){
+if(this.props.name != undefined){
 		return(
   <nav>
   <div className="flex-container">
@@ -17,6 +18,20 @@ class NavBar extends React.Component{
   </div>
 </nav>
 )
+}
+else{
+return(
+  <nav>
+  <div className="flex-container">
+      <Link to='/'><div className="logo"><b>exp</b></div></Link>
+      <ul>
+        <li><Link to='/Logout'>Logout</Link></li>
+        <li><Link to={`/user/${this.props.daLink}`}>Dash</Link></li>
+      </ul>
+  </div>
+</nav>
+)
+}
 }
 }
 

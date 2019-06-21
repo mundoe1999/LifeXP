@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 import Dash from './pages/Dashboard';
 import Project from './pages/Project';
 import LandingPage from './pages/LandingPage';
+
 import SignupComponent from './pages/Signup';
 
 
@@ -33,6 +34,7 @@ class App extends Component {
   render() {
     const DashboardComponent = () => (<Dash />);
     const ProjectComponent = () => (<Project />);
+
     const LandingPageComponent = () => (<LandingPage/>)
     return( 
       <Provider store={store}>

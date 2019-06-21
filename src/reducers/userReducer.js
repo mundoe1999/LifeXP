@@ -24,7 +24,7 @@ export default function (state = initialState, action) {
     case ADD_NEW_USER:
       return {
         ...state,
-        item: action.payload
+        items: action.payload
       };
     case FETCH_USER:
       return {

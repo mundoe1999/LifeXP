@@ -87,7 +87,7 @@ export const addNewUserThunk = (user) => (dispatch) => {
     .post("/api/users", user)
     .then(res => res.data)
     // .then(res => console.log("res in thunk: ", res.id))
-    .then(dispatch(addNewUser()))
+    .then(data => dispatch(addNewUser(data)))
     .catch(err => console.log(err));
 }
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { addNewUserThunk, fetchAllUsersThunk } from '../../actions/userActions'
 import { connect } from 'react-redux';
 import { Redirect, withRouter } from 'react-router-dom';
+import {signInAction}  from '../../actions/authentication';
 
 
 class SignupForm extends Component {
@@ -40,6 +41,7 @@ class SignupForm extends Component {
 
         let newUser = await this.props.newUser(user);
         let id = newUser["id"];
+       // await this.props.signInAction({"username":this.state.username,"password":this.state.password});
         await this.setState({
             userId: id,
             redirect: true
@@ -51,7 +53,7 @@ class SignupForm extends Component {
         let id = this.state.userId;
         return (
           <Redirect to ={{
-              pathname: `/user/${this.state.userId}`,
+              pathname: `/login/`,
               state: {id: id}
           }} />
         )
@@ -97,7 +99,8 @@ const mapDispatchToProps = (dispatch) => {
 
     return {
         fetchUsers: () => dispatch(fetchAllUsersThunk()),
-        newUser: (userToCreate) => dispatch(addNewUserThunk(userToCreate))
+        newUser: (userToCreate) => dispatch(addNewUserThunk(userToCreate)),
+        signInAction
     }
 }
 

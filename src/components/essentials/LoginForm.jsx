@@ -30,14 +30,18 @@ class LoginForm extends Component {
 		return (
     <div id = "loginForm">
     <form onSubmit={handleSubmit(this.submit)} className="signIn">
+			<strong>Username</strong> <br/>
 			<Field name = "username"
 				component="input"
 				type="text"
 			/>
+			<br/>
+			<strong>Password</strong><br/>
 			<Field name = "password"
 				component="input"
 				type="password"
 			/>
+			<br/>
 			<button type="submit">Sign In</button>
     </form>
 			{this.errorMessage}

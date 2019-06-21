@@ -14,8 +14,8 @@ const DashTable = (props) => {
 			<table>
 				<thead>
 				<tr>
-					<th>board</th>
-					<th>to-do</th>
+					<th>task name</th>
+					<th>description</th>
 					<th>level</th>
 					<th>status</th>
 				</tr>

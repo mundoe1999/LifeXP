@@ -65,21 +65,22 @@ class SignupForm extends Component {
                     <form onSubmit={this.submitData} className="signIn">
                         <strong>First Name:</strong>
                         <br />
-                        <input type="text" name="fname" value={this.state.fname} onChange={this.handleInputChange}></input>
+                        <input type="text" name="fname" value={this.state.fname} onChange={this.handleInputChange} required></input>
                         <br />
                         <strong>Last Name:</strong>
                         <br />
-                        <input type="text" name="lname" value={this.state.lname} onChange={this.handleInputChange}></input>
+                        <input type="text" name="lname" value={this.state.lname} onChange={this.handleInputChange} required></input>
                         <br />
                         <strong>Username:</strong>
                         <br />
-                        <input type="text" name="username" value={this.state.username} onChange={this.handleInputChange}></input>
+                        <input type="text" name="username" value={this.state.username} onChange={this.handleInputChange} required></input>
                         <br />
                         <strong>Password:</strong>
                         <br />
-                        <input type="password" name="password" value={this.state.password} onChange={this.handleInputChange}></input>
+                        <input type="password" name="password" value={this.state.password} onChange={this.handleInputChange} required></input>
                         <br />
-                        <input type="text" name="email" value={this.state.email} onChange={this.handleInputChange}></input>
+                        <strong>Email:</strong>
+                        <input type="email" name="email" value={this.state.email} onChange={this.handleInputChange} required></input>
                         <br />
                         <input type="submit" value="Signup"></input>
                     </form>

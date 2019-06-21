@@ -14,11 +14,15 @@ class NewBoardForm extends Component {
     };
 
     this.onChange = this.onChange.bind(this);
+    this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+  }
+  onCancel(e) {
+    this.setState({ redirect:true });
   }
 
   async onSubmit(e) {
@@ -49,8 +53,8 @@ class NewBoardForm extends Component {
     else {
       return (
         <div>
-          <h1>Add Board</h1>
-          <form onSubmit={this.onSubmit}>
+          <h1 style={{"text-align":"center"}}>Add Board</h1>
+          <form onSubmit={this.onSubmit} style={{"text-align":"center"}}>
             <div>
               <label>Name: </label>
               <br />
@@ -83,7 +87,9 @@ class NewBoardForm extends Component {
               />
             </div>
             <br />
+            <button onClick={this.onCancel}>Cancel</button>
             <button type="submit">Submit</button>
+
           </form>
         </div>
       );

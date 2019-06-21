@@ -82,7 +82,7 @@ body {
 
 .RightElement {
     display: inline-block;
-    padding-top: 70px;
+    padding-top: 0px;
     text-align: center;
     font-size:1.5em;
 }
@@ -105,17 +105,38 @@ body {
 
 .DashboardPad{
   padding-left: 30px;
-  padding-right: 30px
+  padding-right: 30px;
+  padding-bottom: 10em;
 }
 
 .ProjectPad{
   padding-left: 200px;
   padding-right: 200px;
+  padding-top: 4em;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   flex-wrap: wrap
 }
+
+.ModalButton{
+  padding: 1em;
+  font-size: 1em;
+  background-color: rgba(0,0,0,0);
+  border: 0px;
+}
+.ModalButton{
+  padding: 1em;
+  font-size: 1em;
+  cursor: pointer;
+  background-color: rgba(0,0,0,0);
+  border: 0px;
+}
+
+.ModalButton:hover{
+  font-weight: bold; 
+}
+
 
 .DisableScrollbars::-webkit-scrollbar {
     width: 0px;

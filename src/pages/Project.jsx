@@ -55,6 +55,7 @@ class Project extends Component {
 							</div>
 						</div>
 						<div className="RightElement">
+							<h2>LeaderBoard</h2>
 							<Leaderboard users={users}/>
 						</div>
 					</div>

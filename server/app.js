@@ -7,7 +7,7 @@ const {db} = require('./database')
 const bodyParser = require('body-parser')
 const {User} = require('./database/')
 const app = express()
-const PORT = 5000
+const PORT = process.env.PORT || 5000;
 
 // Logging middleware
 app.use(morgan('dev'))
@@ -15,6 +15,9 @@ app.use(morgan('dev'))
 // Body parsing middleware
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+
+let locationOfPublicFolder = path.join(__dirname, "../src", "build");
+app.use(express.static(locationOfPublicFolder));
 
 // Session middleware
 app.use(session({
@@ -82,12 +85,12 @@ app.use((err, req, res, next) => {
   res.send(err.message || 'Internal server error')
 })
 
-app.listen(PORT, () =>{
-  console.log("Running")
-})
+//app.listen(PORT, () =>{
+//  console.log("Running")
+//})
 
-// Listener at port 8080
-db.sync()
-  .then(() => {
-    app.listen(8080,() => console.log('Connected at 8080')); 
+// Listener at port
+//db.sync()
+//  .then(() => {
+    app.listen(PORT,() => {console.log('Connected.'); 
   });

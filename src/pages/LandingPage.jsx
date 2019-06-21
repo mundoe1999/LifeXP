@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-import NavBar from '../components/essentials/NavBar';
 import {Link} from 'react-router-dom';
 
 class LandingPage extends Component{
 	render(){
 		return(
 				<div className="TestContainer">
-					<NavBar/>
+
 					<div className="DashboardPad">
 						<h1 className="Centered">Welcome to LifeXP!</h1>
 						<div className="FlexContainer">

@@ -3,18 +3,19 @@
 // Like this: <button id="ModalButton">Edit</button>
 
 import React from 'react';
+import CreateTaskForm from './CreateTaskForm';
+import AddUserToForm from './AddUserToForm';
 
 class Modal extends React.Component{
-	constructor(props){
-		super(props);
-	}
-
 	componentDidMount(){
 		var modal = document.getElementById("myModal");
-		var btn = document.getElementById("ModalButton");
+		var btn = document.getElementsByClassName("ModalButton");
 		var span = document.getElementsByClassName("ModalClose")[0];	
 
-		btn.onclick = function(){
+		btn[0].onclick = function(){
+			modal.style.display = "block";
+		}
+		btn[1].onclick = function(){
 			modal.style.display = "block";
 		}
 
@@ -23,7 +24,7 @@ class Modal extends React.Component{
 		}
 
 		window.onclick = function(e){
-			if(e.target == modal){
+			if(e.target === modal){
 				modal.style.display = "none";
 			}
 		}
@@ -31,22 +32,27 @@ class Modal extends React.Component{
 	}
 
 render(){
+	let thing = this.props.display[0];
+	console.log('thing is',thing);
+	let whatDisplay = '';
+	if(thing === 'addUser'){
+		whatDisplay = <AddUserToForm boardId={this.props.boardId}/>
+	} else if(thing === 'addTask'){
+		whatDisplay = <CreateTaskForm boardId={this.props.boardId} userId={this.props.userId}/>
+	}
 	return(
 		<div id="myModal" className="ModalContent">
 
 			<div className="ModalHeader">
     		<span className="ModalClose">&times;</span>
-    		<h2>Edit Task</h2>
+    		<h2>Add a Thing</h2>
   		</div>
 
   		<div className="ModalBody">
-    		<p>to-do: <input/></p>
-    		<p>difficulty: <input/></p>
-    		<p>status: <input/></p>
+			{whatDisplay}
   		</div>
 
   		<div className="ModalFooter">
-	    	<h3><button id="save">Save changes</button></h3>
  	 		</div>
 
 		</div>

@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
-
+import { createLogger } from 'redux-logger';
 
 
 /*Files involved with the store:
@@ -12,7 +12,7 @@ Thunks are located in ./src/actions
 ./types.js exports all the types of actions for both the thunks and reducers
 */
 
-
+const logger = createLogger({ collapsed: true});
 //Initial state for setting up the store. Initially an empty object
 const initialState = {};
 
@@ -20,7 +20,7 @@ const initialState = {};
 /*array of middleware, currently only contains thunk which allows
 the action creators to return a function as an action
 */
-const middleware = [thunk];
+const middleware = [thunk, logger];
 
 //The store contains the root reducer exported from ./reducers/index.js
 //the initial state, and the middlware

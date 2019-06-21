@@ -1,6 +1,5 @@
 import React from 'react';
 import SignupForm from '../components/essentials/SignUpForm';
-import {Link} from 'react-router-dom';
 
 
 const SignupComponent = () => (

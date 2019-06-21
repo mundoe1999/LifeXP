@@ -57,7 +57,7 @@ export const deleteTaskThunk = (taskId) => (dispatch) => {
   return axios 
       // axios.post because we are ADDING a new task
       // remember, axios can GET, POST, PUT, DELETE
-      .delete("/api/tasks", taskId)
+      .delete(`/api/tasks/${taskId}`, taskId)
       .then(response => response.data)
       .then(data => dispatch(removeTask()))
       .catch(err => console.log(err));

@@ -33,7 +33,7 @@ class Dash extends Component {
 			.then(res => this.setState({ data: res.express }))
 			.catch(error => console.log(error));
 
-		const { match, location, history } = this.props
+		const { match } = this.props
 		//also very hacky but necessary because the render happens too fast
 		//causing the array indexing below to return undefined
 		//and crash the page otherwise. Looking into real fix

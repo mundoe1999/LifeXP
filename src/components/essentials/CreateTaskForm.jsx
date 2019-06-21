@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 //Eventually
 import { connect } from 'react-redux';
 import {addNewTaskThunk} from '../../actions/taskActions';
-import axios from 'axios';
 import {Redirect, withRouter} from 'react-router-dom';
 
 // NOTE:
@@ -16,14 +15,15 @@ class CreateTaskForm extends Component {
 
 	constructor (props) {
 		super(props);
-
+		console.log(this.props.userId)
 		this.state = {
 			name: "",
 			desc: "",
 			status: "NOTSTARTED",
 			difficulty: "EASY",
 			color: 'RED',
-			userId: null
+			userId: this.props.userId,
+			redirect: false
 		}
 
 		this.handleInputChange = this.handleInputChange.bind(this);
@@ -46,7 +46,7 @@ class CreateTaskForm extends Component {
 			status: this.state.status,
 			difficulty: this.state.difficulty,
 			color: this.state.color,
-			boardId: this.props.match.params.boardId,
+			boardId: this.props.boardId,
 			userId: this.state.userId
 		}
 
@@ -61,12 +61,18 @@ class CreateTaskForm extends Component {
 			status: "NOTSTARTED",
 			difficulty: "EASY",
 			color: 'RED',
-			boardId: 1,
-			userId: null
+			boardId: this.props.boardId,
+			userId: null,
+			redirect: true
 		});
 	}
 
 	render () {
+		if(this.state.redirect){
+			return (
+        <Redirect to={`/dashboard/${this.props.user["id"]}`} />
+      )
+		}
 
 		return (
     <div id = "TaskForm">
@@ -117,7 +123,7 @@ class CreateTaskForm extends Component {
 }
 const mapStateToProps = state => ({
 	boards: state.boards.items,
-	users: state.users.items
+	user: state.users.item[0]
 });
 
 const mapDispatchToProps = (dispatch) =>{

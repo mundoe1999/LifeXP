@@ -1,23 +1,45 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import {Link, withRouter} from 'react-router-dom';
+import {Redirect, withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {deleteTaskThunk} from '../../actions/taskActions';
 
 
 class ProjTable extends Component{
 
+	constructor(props){
+		super(props);
+		this.completeTask = this.completeTask.bind(this);
+		this.state = {
+			redirect: false
+		}
+	}
+
+	completeTask = (id) => {
+		console.log(id);
+		this.props.compTask(id);
+		this.setState({
+			redirect: true
+		})
+	}
+
 	render(){
-		let taskList = this.props.tasks || [];
-		const tasks = taskList.map(element =>{
+		if(this.state.redirect){
+			return(
+			<Redirect to={`/board/${this.props.match.params.boardId}`} />
+			)
+		}
+		let taskList = this.props.tasks || []; 
+		const tasks = taskList.map(element => {
 			return(
 				<tr>
-					<td>{element["id"]}</td>
-					<td>{element["name"]}</td>
-					<td>{element["difficulty"]}</td>
-					<td>{element["status"]}</td>
+					<td>{element.userId}</td>
+					<td>{element.name}</td>
+					<td>{element.difficulty}</td>
+					<td>{element.status}</td>
+					<td><button onClick={() => this.completeTask(element.id)}>COMPLETE</button></td>
 				</tr>
 			)
 		});
-		console.log(taskList);
 		return(
 			<div>
 				<table>
@@ -35,4 +57,11 @@ class ProjTable extends Component{
 	}
 }
 
-export default ProjTable;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    compTask: (id) => dispatch(deleteTaskThunk(id)),
+  }
+}
+
+
+export default withRouter(connect(null, mapDispatchToProps)(ProjTable));

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addNewBoardThunk, addUserToBoardThunk } from '../../actions/boardActions';
 import { Redirect, withRouter } from 'react-router-dom'
@@ -44,7 +43,7 @@ class NewBoardForm extends Component {
   render() {
     if (this.state.redirect) {
       return (
-        <Redirect to={`/user/${this.props.user["id"]}`} />
+        <Redirect to={`/dashboard/${this.props.user["id"]}`} />
       )
     }
     else {

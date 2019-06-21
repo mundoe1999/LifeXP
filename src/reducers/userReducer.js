@@ -1,11 +1,12 @@
 
 
-import { FETCH_USERS, ADD_NEW_USER, FETCH_USER, REMOVE_USER, GET_USER} from '../actions/types';
+import { FETCH_USERS, ADD_NEW_USER, FETCH_USER, REMOVE_USER, GET_USER,FETCH_USER_BY_NAME } from '../actions/types';
 
 //initial state for the actions is empty, use this to store payload
 const initialState = {
   items: [],
-  item: []
+  item: [],
+  searchUsers: []
 };
 
 
@@ -23,7 +24,7 @@ export default function (state = initialState, action) {
     case ADD_NEW_USER:
       return {
         ...state,
-        item: action.payload
+        items: action.payload
       };
     case FETCH_USER:
       return {
@@ -39,6 +40,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         user: action.user
+      }
+    case FETCH_USER_BY_NAME:
+      return {
+        ...state,
+        searchUsers: action.payload
       }
     default:
       return state;

@@ -1,5 +1,5 @@
 //Import the list of actions from type for user actions
-import { FETCH_USERS, ADD_NEW_USER, REMOVE_USER, FETCH_USER, ADD_USER_TO_BOARD, GET_USER } from './types';
+import { FETCH_USERS, ADD_NEW_USER, REMOVE_USER, FETCH_USER, FETCH_USER_BY_NAME } from './types';
 
 
 import axios from 'axios';
@@ -24,17 +24,17 @@ const fetchUser = (user) => {
   }
 }
 
+const fetchUserByName = (user) => {
+  return {
+    type: FETCH_USER_BY_NAME,
+    payload: user
+  }
+}
+
 const addNewUser = (newUser) => {
   return {
     type: ADD_NEW_USER,
     payload: newUser
-  }
-}
-
-const addUserToBoard = (user) => {
-  return {
-    type: ADD_USER_TO_BOARD,
-    payload: user
   }
 }
 
@@ -71,13 +71,23 @@ export const fetchUserThunk = (userId) => dispatch => {
     })
 };
 
+export const fetchUserByNameThunk = (username) => dispatch => {
+  console.log("Blahbahba called", username)
+  return axios
+    .put(`/api/users/searchUsers`, username)
+    .then(res => {
+      console.log(res.data);
+      dispatch(fetchUserByName(res.data))
+    })
+};
+
 
 export const addNewUserThunk = (user) => (dispatch) => {
   return axios
     .post("/api/users", user)
     .then(res => res.data)
     // .then(res => console.log("res in thunk: ", res.id))
-    .then(dispatch(addNewUser()))
+    .then(data => dispatch(addNewUser(data)))
     .catch(err => console.log(err));
 }
 
@@ -87,40 +97,6 @@ export const deleteUserThunk = (userId) => (dispatch) => {
     .then(res => res.data)
     .then(data => dispatch(removeUser()))
     .catch(err => console.log(err));
-}
-
-export const addUserToBoardThunk = (user) => (dispatch) => {
-  return axios
-    .put(`/api/board/`, user)
-    .then(res => res.data)
-    //might not need taht data part, jsut the then
-    .then(data => dispatch(addUserToBoard()))
-    .catch(err => console.log(err));
-}
-
-/*Waste */
-
-const gotMe = (user) => ({
-  type: GET_USER,
-  user
-})
-
-export const getMe = () => dispatch => {
-  return axios.get('/auth/me')
-    .then(res => res.data)
-    .then(user => dispatch(gotMe(user)))
-    .catch(console.error.bind(console))
-
-}
-
-
-
-export const login = (formData) => dispatch => {
-  return axios.put('/auth/login', formData)
-    .then(res => res.data)
-    .then(user => dispatch(gotMe(user)))
-    .catch(console.error.bind(console))
-
 }
 
 

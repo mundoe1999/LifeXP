@@ -92,5 +92,5 @@ app.use((err, req, res, next) => {
 // Listener at port
 db.sync()
   .then(() => {
-    app.listen(PORT,() => console.log('Connected at ' + PORT)); 
+    app.listen(PORT,() => console.log('Connected.')); 
   });

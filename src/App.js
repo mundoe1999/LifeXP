@@ -24,6 +24,7 @@ import{AUTHENTICATED} from './actions/types';
 const user = localStorage.getItem('user');
 if(user){
   store.dispatch({type:AUTHENTICATED});
+  console.log(user);
 }
 
 

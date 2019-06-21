@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import NavBar from '../components/essentials/NavBar';
 import {Link} from 'react-router-dom';
 
 class LandingPage extends Component{

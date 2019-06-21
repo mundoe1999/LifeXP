@@ -6,9 +6,8 @@ export function signInAction({username,password}, history){
     try {
       const res = await axios.put('/auth/login',{username,password});
       dispatch({type: AUTHENTICATED});
-      localStorage.setItem('user', res.data.token);
-      console.log(res.data);
-      console.log(res.data.token);
+      localStorage.setItem('user', res.data);
+      //localStorage.setItem('userInfo', res.data);
     } catch(error){
       dispatch({
         type: AUTHENTICATED_ERROR,

@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {User} = require('./database/')
+var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
 module.exports = router
 
 router.use('/google', require('./oauth'))
@@ -15,8 +16,10 @@ router.put('/login', async (req, res, next) => {
         username: req.body.username,
         password: req.body.password
       }
-    })
+    });
+
     if (user) {
+      //var token = jwt.sign(user, "MIGqAgEAAiEAty+An5KUJYsjhnwBfkx1NdPkQLnhncnFdkUH0gfl+VMCAwEAAQIhAJcCt9vUMACLJSwWSfzd9riUjdajKKqh2AAcp9lQAztxAhEA7NTjChhmfFLZXkU0sQwERQIRAMYDFAb+834lhyE7pPzf/LcCECTe49XfhJ0YXOTzS0fBAi0CEDlaDuTv10rER91iTylHHwUCEBoZFC1PjjKDECD/7FKfLlk=");
       req.login(user, (err) => err ? next(err) : res.json(user))
     } else {
       const err = new Error('Incorrect username or password!')

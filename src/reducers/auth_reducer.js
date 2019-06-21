@@ -5,12 +5,12 @@ export default function(state={}, action){
     case AUTHENTICATED:
       return{
         ...state,
-        authenticated: true
+        authenticated: true,
       };
     case UNAUTHENTICATED:
       return{
         ...state,
-        authenticated: false
+        authenticated: false,
       };
     case AUTHENTICATED_ERROR:
       return{

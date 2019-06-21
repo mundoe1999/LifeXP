@@ -7,10 +7,6 @@ import CreateTaskForm from './CreateTaskForm';
 import AddUserToForm from './AddUserToForm';
 
 class Modal extends React.Component{
-	constructor(props){
-		super(props);
-	}
-
 	componentDidMount(){
 		var modal = document.getElementById("myModal");
 		var btn = document.getElementsByClassName("ModalButton");
@@ -28,7 +24,7 @@ class Modal extends React.Component{
 		}
 
 		window.onclick = function(e){
-			if(e.target == modal){
+			if(e.target === modal){
 				modal.style.display = "none";
 			}
 		}
@@ -37,13 +33,12 @@ class Modal extends React.Component{
 
 render(){
 	let thing = this.props.display[0];
-	console.log(thing);
+	console.log('thing is',thing);
 	let whatDisplay = '';
-	if(thing === 'addTask'){
+	if(thing === 'addUser'){
 		whatDisplay = <AddUserToForm boardId={this.props.boardId}/>
-	} else if(whatDisplay === 'addUser'){
-
-		whatDisplay = <CreateTaskForm boardId={this.props.boardId}/>
+	} else if(thing === 'addTask'){
+		whatDisplay = <CreateTaskForm boardId={this.props.boardId} userId={this.props.userId}/>
 	}
 	return(
 		<div id="myModal" className="ModalContent">

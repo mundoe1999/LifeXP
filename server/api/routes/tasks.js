@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Task } = require('../../database');
+const { Task, User } = require('../../database');
 
 
 /*
@@ -83,11 +83,36 @@ router.put('/:taskId', async(req,res,next) =>{
 
 router.delete('/:taskId', async(req,res,next) =>{
     try{
+      const taskUser = await Task.findByPk(req.params.taskId);
+      let user_id =taskUser.userId;
+      let difficulty = taskUser.difficulty;
+      
       await Task.destroy({
         where: {
           id: req.params.taskId
         }
       });
+      
+      //Should add score to the person with a user ID here
+      if(typeof user_id !== null){
+        let levelIncrement = 1;
+        switch(difficulty){
+          case("EASY"):
+            levelIncrement = 3;
+            break;
+          case("MEDIUM"):
+            levelIncrement = 7;
+            break;
+          case("HARD"):
+            levelIncrement= 15;
+            break;
+        }
+        const user = await User.findByPk(user_id);
+
+        let modifier = {"level": user.level+levelIncrement};
+        await User.update(modifier, {where:{id:user_id}})
+      }
+
       res.send(`Successfully deleted task ${req.params.taskId}`);
       console.log(`Successfully deleted task ${req.params.taskId}!`);
     }

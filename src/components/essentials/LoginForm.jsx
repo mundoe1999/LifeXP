@@ -4,7 +4,7 @@ import {signInAction}  from '../../actions/authentication';
 
 //Eventually
  import { connect } from 'react-redux';
- import { Redirect, withRouter } from 'react-router-dom';
+ import { withRouter } from 'react-router-dom';
 
 // import axios from 'axios';
 

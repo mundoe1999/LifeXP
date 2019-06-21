@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import {fetchUserByNameThunk} from '../../actions/userActions';
 import {addUserToBoardThunk} from '../../actions/boardActions'
 import axios from 'axios';
-import {Redirect, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
 // NOTE:
 // BoardId should be stored in our initial state
@@ -56,7 +56,7 @@ class AddUserToForm extends Component {
 
 	render () {
 		return (
-    <div id = "TaskForm">
+    <div id = "UserForm">
     <form onSubmit={this.submitData} className="AddTask">
       <strong>Username:</strong>
       <br/>

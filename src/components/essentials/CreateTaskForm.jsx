@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 //Eventually
 import { connect } from 'react-redux';
 import {addNewTaskThunk} from '../../actions/taskActions';
-import axios from 'axios';
-import {Redirect, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
 // NOTE:
 // BoardId should be stored in our initial state
@@ -16,14 +15,14 @@ class CreateTaskForm extends Component {
 
 	constructor (props) {
 		super(props);
-
+		console.log(this.props.userId)
 		this.state = {
 			name: "",
 			desc: "",
 			status: "NOTSTARTED",
 			difficulty: "EASY",
 			color: 'RED',
-			userId: 2,
+			userId: this.props.userId,
 		}
 
 		this.handleInputChange = this.handleInputChange.bind(this);
@@ -61,7 +60,7 @@ class CreateTaskForm extends Component {
 			status: "NOTSTARTED",
 			difficulty: "EASY",
 			color: 'RED',
-			boardId: 1,
+			boardId: this.props.boardId,
 			userId: null
 		});
 	}

@@ -49,7 +49,10 @@ class Project extends Component {
 					<NavBar name={this.props.user["fname"]} daLink={this.props.user["id"]} />
 					<div className="ProjectPad">
 						<div className="LeftElement">
-							<BoardCard board={{ "name": name, "desc": desc }} />
+							<div className="BoardCard Card ORANGE">
+								<h1>{name}</h1>
+								<h4>{desc}</h4>
+							</div>
 						</div>
 						<div className="RightElement">
 							<Leaderboard users={users}/>

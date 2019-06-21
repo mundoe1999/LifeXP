@@ -5,7 +5,7 @@ const DashTable = (props) => {
 	<tr>
 	<th>{currentTask.name}</th>
 	<th>{currentTask.desc}</th>
-	<th></th>
+	<th>{currentTask.difficulty}</th>
 	<th> {currentTask.status}</th>
 	</tr>
 )

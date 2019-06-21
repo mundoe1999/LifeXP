@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 //Eventually
 import { connect } from 'react-redux';
 import {addNewTaskThunk} from '../../actions/taskActions';
-import {withRouter} from 'react-router-dom';
+import {Redirect, withRouter} from 'react-router-dom';
 
 // NOTE:
 // BoardId should be stored in our initial state
@@ -23,6 +23,7 @@ class CreateTaskForm extends Component {
 			difficulty: "EASY",
 			color: 'RED',
 			userId: this.props.userId,
+			redirect: false
 		}
 
 		this.handleInputChange = this.handleInputChange.bind(this);
@@ -61,11 +62,17 @@ class CreateTaskForm extends Component {
 			difficulty: "EASY",
 			color: 'RED',
 			boardId: this.props.boardId,
-			userId: null
+			userId: null,
+			redirect: true
 		});
 	}
 
 	render () {
+		if(this.state.redirect){
+			return (
+        <Redirect to={`/dashboard/${this.props.user["id"]}`} />
+      )
+		}
 
 		return (
     <div id = "TaskForm">
@@ -116,7 +123,7 @@ class CreateTaskForm extends Component {
 }
 const mapStateToProps = state => ({
 	boards: state.boards.items,
-	users: state.users.items
+	user: state.users.item[0]
 });
 
 const mapDispatchToProps = (dispatch) =>{

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import {fetchUserByNameThunk} from '../../actions/userActions';
 import {addUserToBoardThunk} from '../../actions/boardActions'
 import axios from 'axios';
-import {withRouter} from 'react-router-dom';
+import {Redirect, withRouter} from 'react-router-dom';
 
 // NOTE:
 // BoardId should be stored in our initial state
@@ -19,7 +19,9 @@ class AddUserToForm extends Component {
 		super(props);
 
 		this.state = {
-			username: ""
+			username: "",
+			redirect: false
+
 		}
 
 		this.handleInputChange = this.handleInputChange.bind(this);
@@ -48,6 +50,7 @@ class AddUserToForm extends Component {
 		//Reset Component
 		this.setState({
 			name: "",
+			redirect: true
 		});
 
 		//Redirect back to the board
@@ -55,6 +58,11 @@ class AddUserToForm extends Component {
 	}
 
 	render () {
+		if(this.state.redirect){
+			return (
+        <Redirect to={`/dashboard/${this.props.user["id"]}`} />
+      )
+		}
 		return (
     <div id = "UserForm">
     <form onSubmit={this.submitData} className="AddTask">
@@ -75,7 +83,7 @@ class AddUserToForm extends Component {
 }
 const mapStateToProps = state => ({
 	boards: state.boards.items,
-	users: state.users.items,
+	user: state.users.item[0],
 	search: state.users.searchUsers
 });
 

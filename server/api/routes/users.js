@@ -28,12 +28,12 @@ router.get('/', async(req, res, next) =>{
   }
 });
 
-router.get('/searchUsers', async(req,res,next) =>{
+router.put('/searchUsers', async(req,res,next) =>{
   try{
     //Search user by username
-    const Allusers = await User.findAll({
+    const Allusers = await User.findOne({
       where: {username: req.body.username},
-      attributes: ['fname','lname','username','image','level']
+      attributes: ['id','fname','lname','username','image','level']
     });
     res.send(Allusers);
   }catch(error){

@@ -8,6 +8,7 @@ import Leaderboard from '../components/project/Leaderboard';
 import { fetchBoardThunk } from '../actions/boardActions';
 import { fetchAllTasksThunk } from '../actions/taskActions';
 import { withRouter } from 'react-router-dom';
+import Modal from '../components/essentials/Modal';
 /*
 
 */
@@ -17,23 +18,31 @@ class Project extends Component {
 		super(props)
 		this.state = {
 			data: ' ',
-			board: ' '
+			board: ' ',
+			boardId: -1,
+			showModal: false,
+			whatModalDisplay: ''
 		};
+
+		this.toggleModal = this.toggleModal.bind(this);
 	}
 	componentWillMount() {
 		this.props.fetchBoard(this.props.match.params.boardId);
 		this.props.fetchTasks();
+
 	}
 
+	toggleModal(e){
+		this.setState({
+			showModal: !this.state.showModal,
+			whatModalDisplay: [e.target.name]
+		})
+		console.log("Change!");
+	}
 
 	render() {
-		//console.log("****ID", this.props.match.params.boardId);
-		console.log(this.props.user);
 		return (
 			<div>
-				<head>
-					<link rel="stylesheet" type="text/css" href="../Style.css" />
-				</head>
 				<div className="TopContainer">
 					<NavBar name={this.props.user["fname"]} daLink={this.props.user["id"]} />
 					<div className="ProjectPad">
@@ -48,9 +57,9 @@ class Project extends Component {
 					<br />
 					<footer>
 						<ul>
-							<li>+ Add User</li>
+							<li><button className="ModalButton" name="addUser" onClick={this.toggleModal}>+ Add User</button></li>
 							<li>- Remove User</li>
-							<li>+ Add Task</li>
+							<li><button className="ModalButton" name="addTask" onClick={this.toggleModal}>+ Add Task</button></li>
 						</ul>
 					</footer>
 
@@ -60,6 +69,7 @@ class Project extends Component {
 					<h1>group tasks</h1>
 					<ProjTable tasks = {this.props.board["tasks"]}/>
 				</div>
+				<Modal boardId={this.props.match.params.boardId} display={this.state.whatModalDisplay}/>
 			</div>
 		)
 	}

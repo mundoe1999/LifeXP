@@ -10,7 +10,7 @@ class ProjTable extends Component{
 		const tasks = taskList.map(element =>{
 			return(
 				<tr>
-					<td>{element["id"]}</td>
+					<td>{element["userId"]}</td>
 					<td>{element["name"]}</td>
 					<td>{element["difficulty"]}</td>
 					<td>{element["status"]}</td>

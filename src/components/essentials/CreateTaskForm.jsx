@@ -23,7 +23,7 @@ class CreateTaskForm extends Component {
 			status: "NOTSTARTED",
 			difficulty: "EASY",
 			color: 'RED',
-			userId: null
+			userId: 2,
 		}
 
 		this.handleInputChange = this.handleInputChange.bind(this);
@@ -46,7 +46,7 @@ class CreateTaskForm extends Component {
 			status: this.state.status,
 			difficulty: this.state.difficulty,
 			color: this.state.color,
-			boardId: this.props.match.params.boardId,
+			boardId: this.props.boardId,
 			userId: this.state.userId
 		}
 

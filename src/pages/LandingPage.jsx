@@ -6,7 +6,6 @@ class LandingPage extends Component{
 	render(){
 		return(
 				<div className="TestContainer">
-					<NavBar/>
 					<div className="DashboardPad">
 						<h1 className="Centered">Welcome to LifeXP!</h1>
 						<div className="FlexContainer">

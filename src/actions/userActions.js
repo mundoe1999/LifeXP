@@ -1,5 +1,5 @@
 //Import the list of actions from type for user actions
-import { FETCH_USERS, ADD_NEW_USER, REMOVE_USER, FETCH_USER, ADD_USER_TO_BOARD, GET_USER } from './types';
+import { FETCH_USERS, ADD_NEW_USER, REMOVE_USER, FETCH_USER, ADD_USER_TO_BOARD, GET_USER, FETCH_USER_BY_NAME } from './types';
 
 
 import axios from 'axios';
@@ -20,6 +20,13 @@ const fetchUsers = (user) => {
 const fetchUser = (user) => {
   return {
     type: FETCH_USER,
+    payload: user
+  }
+}
+
+const fetchUserByName = (user) => {
+  return {
+    type: FETCH_USER_BY_NAME,
     payload: user
   }
 }
@@ -71,6 +78,16 @@ export const fetchUserThunk = (userId) => dispatch => {
     })
 };
 
+export const fetchUserByNameThunk = (username) => dispatch => {
+  console.log("Blahbahba called", username)
+  return axios
+    .put(`/api/users/searchUsers`, username)
+    .then(res => {
+      console.log(res.data);
+      dispatch(fetchUserByName(res.data))
+    })
+};
+
 
 export const addNewUserThunk = (user) => (dispatch) => {
   return axios
@@ -89,14 +106,6 @@ export const deleteUserThunk = (userId) => (dispatch) => {
     .catch(err => console.log(err));
 }
 
-export const addUserToBoardThunk = (user) => (dispatch) => {
-  return axios
-    .put(`/api/board/`, user)
-    .then(res => res.data)
-    //might not need taht data part, jsut the then
-    .then(data => dispatch(addUserToBoard()))
-    .catch(err => console.log(err));
-}
 
 /*Waste */
 
